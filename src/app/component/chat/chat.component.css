@@ -1,0 +1,67 @@
+.messageBox{
+    padding: 1px 0px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.messagetext{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.ccoptions{
+    display: block;
+    position: absolute;
+    margin: 15px 0 0 25px;
+    margin-left: -10em;
+    border-radius: 10px;
+    background: #ffce7a;
+    z-index: 170;
+    min-width: 268px;
+    min-height: 270px;
+    padding: 0 10px;
+}
+
+.ccbtn{
+    margin-top: 10px;
+    background-color: #78500c;
+    font: 600 14px "Montserrat SemiBold";
+    color: white;
+    min-width: 100px;
+    min-height: 24px;
+    border-radius: 4px;
+}
+
+.yesbtn{
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 0px 3px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.nobtn{
+    background-color: red;
+    color: white;
+    padding: 0px 3px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.chat-msg {height: 100%;}
+.chat-msg .chat-panel-messages-right {
+    position: relative;
+    float: none;
+    margin-left: 0;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.chat-msg .chat-panel-messages-right p {
+    display: inline-block;
+}

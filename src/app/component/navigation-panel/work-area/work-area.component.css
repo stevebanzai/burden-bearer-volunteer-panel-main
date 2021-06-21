@@ -1,0 +1,8 @@
+.messageBox{
+    padding: 3px 3px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+.work-area-pdf h4 {position: relative;}
+.work-area-pdf h4 a {position: absolute; right: 0;}

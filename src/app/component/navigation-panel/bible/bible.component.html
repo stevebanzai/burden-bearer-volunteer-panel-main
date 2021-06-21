@@ -1,0 +1,303 @@
+<div class="grid-stack-item-content chat-queue-panel-wrapper">
+
+
+    <!-- Personal Verse Favs Master Div -->
+    <div class="bible-wrapper" id="bible-wrapper">
+
+        <!-- Personal Favs Header-->
+        <div class="bible-header" (dblclick)="togleComponentbody()">
+            <div class="bible-header-left">
+                <img src="/assets/dist/img/icons/bible-head-icon.png">
+                <span>Bible</span>
+            </div>
+            <div class="bible-header-right">
+                <!-- <a class="bible-dot-menu" href="javascript:void(0)" onclick="toggleActionButton('personal-favs-table-time')"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a> -->
+                <a href="javascript:void(0)" (click)="toggle()" id="bible-close-btn"><img
+                        src="/assets/dist/img/icons/bible-testament-icon.png"></a>
+                <a href="javascript:void(0)" (click)="togglecloseb()" id="bible-close-btn"><i
+                        class="fa fa-close"></i></a>
+            </div>
+        </div>
+
+
+        <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+            <p>{{message}} </p>
+        </div>
+
+        <div class="bible-body" id="bible-body">
+            <div class="buttons" [hidden]="!number3" *ngIf="showTestimentToggle">
+                <button class="ot" name="ot" (click)="toggleTestament(1)">OT</button>
+                <button class="nt" (click)="toggleTestament(2)">NT</button>
+            </div>
+
+            <div *ngIf="!SearchHeader" class="testament gridster-item-content">
+                <h5 *ngIf="this.SelectedTestament == 'OT'">Old Testament</h5>
+                <h5 *ngIf="this.SelectedTestament == 'NT'">New Testament</h5>
+
+                <div>
+                    <div class="row biblechapterTable" *ngIf="oldTestament">
+                        <div class="col-1 borderdisplay" *ngFor="let item of allbibleChapters">
+                            <span (click)="bookChapters(item.BOOK_ABBR)">{{item.BOOK_ABBR}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="testament gridster-item-content" *ngIf="oldTestament">
+               
+            </div> -->
+            <div class="biblechapterTable" *ngIf="!SearchHeader">
+                <h5> {{bookFullName}}</h5>
+            </div>
+            <div class="row biblechapterTable" (click)="toogelheader()" *ngIf="chapterList">
+
+                <div class="col-1 borderdisplay" *ngFor="let item of chapterListData">
+                    <span (click)="getBibele(item)">{{item}}</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="bible-searchbar-wrapper gridster-item-content">
+                <div class="bible-searchbar">
+                    <input width="100%" type="text" [(ngModel)]="searchQuery" (keyup.enter)="search()"
+                        placeholder=" Search... ">
+                    <i (click)="search()" class="fa fa-search "></i>
+                </div>
+                <div class="select-wrapper">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="custom-select-div ">
+                                <label>
+                                    <select [(ngModel)]="version" value="{{version}}" (change)="changeBibleversion()">
+                                        <option value="NASB">NASB</option>
+                                        <option value="ESV">ESV</option>
+                                        <option value="NIV">NIV</option>
+                                        <!-- <option value="KJV">KJV</option> -->
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="bible-verse ">
+                <div class="mySlides">
+                    <div class="navigation-wrapper" *ngIf="ArrowHideShow==true">
+                        <div class="navigation gridster-item-content" id="isShowDiv2">
+                            <div class="navigation-inner gridster-item-content ">
+                                <i  class="fa fa-angle-double-left double1 " aria-hidden="true"
+                                    (click)="previousBook()"></i>
+                                <i  class="fa fa-angle-left gridster-item-content "
+                                    aria-hidden="true " (click)="pervious()"></i>
+                                <h6 *ngIf="heading">{{ bookFullName }} {{ chapter }}</h6>
+                                <h6 *ngIf="SearchHeader">{{searchQuery}} </h6>
+                                <i  class="fa fa-angle-right gridster-item-content rightArrow"
+                                    aria-hidden="true " (click)="next()"></i>
+                                <i  class="fa fa-angle-double-right double1 " aria-hidden="true "
+                                    (click)="nextBook()"></i>
+                            </div>
+                        </div>
+                        <a class="bible-navigation-dot-menu" href="javascript:void(0) " (click)="toggleShow()"
+                            type="checkbox"><i class="fa fa-ellipsis-v" aria-hidden="true "></i></a>
+                    </div>
+                    <div class="div1" style="max-height: 178px;overflow-y: auto;">
+                        <div [hidden]="!collapse">
+
+                            <style>
+                                .div1 {
+                                    overflow-y: auto;
+                                    height: 200px;
+                                }
+                            </style>
+                            <div class="table-responsive">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class=" CR-tableLeft" id="stronge-cross-hide">
+                                                <h5> {{book}}</h5>
+                                                <h5>{{verse}}</h5>
+                                                <div class="actionDiv " *ngIf="isShown">
+                                                    <span class="s" id="s1" (click)="updateToggle(i);">&lt;&lt;</span>
+                                                    <span *ngIf="SearchHeader" class="cr"
+                                                        (click)="cr(book, verse, verseText)">CR</span>
+                                                    <span *ngIf="!SearchHeader" class="cr"
+                                                        (click)="crb(book, verse, verseText)">CR</span>
+                                                    <span class="dropdown">
+                                                        <span style="background: #ffce79; " class="btn" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            Add
+                                                        </span>
+                                                        <div style="background: #ffce79;" class="dropdown-menu "
+                                                            aria-labelledby="dropdownMenuButton">
+
+
+                                                            <a class="dropdown-item"
+                                                                (click)="onSubmit(book+' '+ verse,verseText)">Work
+                                                                Area</a>
+
+
+                                                        </div>
+
+                                                    </span>
+                                                </div>
+                                            </td>
+
+                                            <td class="CR-tableRight ">
+                                                <p>
+
+                                                    {{verseText}}
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="strong enable" id="strong-1">
+                                            <td colspan="2">
+                                                <table>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>English</td>
+                                                            <td onclick="showStrongVerses()">Strong</td>
+                                                        </tr>
+                                                        <tr *ngFor="let item of sts">
+                                                            <td>{{item.value}}</td>
+                                                            <td (click)="onSelect(item)">
+                                                                {{item.strong}}</td>
+                                                        </tr>
+                                                        <tr *ngFor="let item of strongsList" [hidden]="!strong">
+                                                            <td>{{item.word}}</td>
+                                                            <td (click)="onVerse(item.code, item.word)">
+                                                                {{item.code}}</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                        <div *ngIf="showBible">
+                            <div class="table-responsive " *ngIf="!SearchHeader">
+                                <table>
+                                    <tbody>
+
+                                        <tr *ngFor="let item of BibleVerses, let i= index">
+                                            <td class=" CR-tableLeft">
+                                                <!-- <h5>{{item.division}}</h5> -->
+                                                <h5>{{item.topic_no }}</h5>
+
+                                                <div class="actionDiv " *ngIf="isShown">
+                                                    <span class="s " id="s1 "
+                                                        (click)="getStrong(item.topic_no, item.content)">S</span>
+                                                    <!-- <span class="s " id="s1 " (click)="getStrong(item.verse, item.text)">S</span> -->
+                                                    <span class="cr" (click)="openCrossrefTab(item)">CR</span>
+                                                    <span class="dropdown">
+                                                        <span style="background: #ffce79; " class="btn" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            Add
+                                                        </span>
+                                                        <div style="background: #ffce79;" class="dropdown-menu "
+                                                            aria-labelledby="dropdownMenuButton">
+
+                                                            <a class="dropdown-item"
+                                                                (click)="onSubmit(item.division+' '+ item.topic_no,item.content)">Work
+                                                                Area</a>
+                                                            <!-- <a class="dropdown-item"
+                                                            (click)="onSubmit(item.book,item.verse,item.text)">Work Area</a> -->
+                                                            <!-- <a class="dropdown-item"
+                                                            (click)="savejourney(item.verse,item.text)">Journey</a> -->
+                                                            <a class="dropdown-item"
+                                                                (click)="addtofavlist(item.main,item.topic_no,item.chapter_no,item.content)">Personal
+                                                                Favs</a>
+
+                                                        </div>
+
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="CR-tableRight ">
+                                                <p>
+                                                    {{item.content}}
+                                                    <!-- {{item.text}} -->
+                                                </p>
+                                            </td>
+
+                                        </tr>
+                                        <!-- <span *ngIf="BibleVerses?.length > 0" (click)="changedPageLOadSchema1('viewMore')">View More</span> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive" *ngIf="SearchHeader">
+                                <table>
+                                    <tbody>
+                                        <tr *ngFor="let item of optResults, let i= index">
+                                            <td class=" CR-tableLeft ">
+                                                <h5>{{item.key}}</h5>
+                                                <div class="actionDiv " *ngIf="isShown">
+                                                    <span class="s " id="s1 "
+                                                        (click)="getstrongsFromSearch(item)">S</span>
+                                                    <span class="cr "
+                                                        (click)="openCrossrefTabFromSearch(item)">CR</span>
+                                                    <span class="dropdown">
+                                                        <button style="background: #ffce79;" class="btn" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            Add
+                                                        </button>
+
+
+                                                        <div style="background: #ffce79;" class="dropdown-menu "
+                                                            aria-labelledby="dropdownMenuButton">
+
+                                                            <a class="dropdown-item"
+                                                                (click)="onSubmit(item.key,item.preview)">Work Area</a>
+                                                            <a class="dropdown-item"
+                                                                (click)="savejourney(item.key,item.preview)">Journey</a>
+                                                            <a class="dropdown-item"
+                                                                (click)="savePersonalfav(item.key,item.preview)">Personal
+                                                                Favs</a>
+                                                            <!-- <h5>Add To<i class="fa fa-close "></i></h5> -->
+                                                        </div>
+
+                                                    </span>
+
+                                                </div>
+                                            </td>
+
+                                            <td class="CR-tableRight ">
+                                                <p>
+                                                    {{ item.preview}}
+                                                </p>
+                                            </td>
+
+                                        </tr>
+
+                                        <!-- <span *ngIf="optResults?.length > 0" (click)="search()"> view more</span> -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>

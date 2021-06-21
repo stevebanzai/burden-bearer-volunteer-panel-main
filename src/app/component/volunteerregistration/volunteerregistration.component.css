@@ -1,0 +1,11 @@
+.gridster.fixed {
+    overflow: hidden;
+}
+.volunteer-panel-wrapper1
+ {
+    position: relative;
+    width: 100%;
+    border: 2px solid #78500c;
+    border-radius: 4px;
+    background-color: white;
+}

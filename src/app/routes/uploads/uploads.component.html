@@ -1,0 +1,250 @@
+<div class="d-flex" style="overflow-x: hidden;">
+    <div [ngClass]="iscollapsed?'w50 ':'w190'" style="position: relative;">
+        <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
+
+        <!-- <div class="col-2"> -->
+        <div id="sidebar-container" [ngClass]="iscollapsed?'sidebar-collapsed':'sidebar-expanded'"
+            class="d-none d-md-block bg-light">
+            <a (click)="toggleSidebar()" class=" text-dark sidenav-collapse">
+                <div class="nav-expand-close">
+                    <span id="collapse-icon" class="fa fa-angle-double-left icon-size"></span>
+                </div>
+            </a>
+            <div class="leftmenu-scroll">
+                <ul class="list-group">
+                   
+                    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false"
+                        class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"
+                       >
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Dashboard</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false" 
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Journey</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Chat</span>
+                        </div>
+                    </a>
+                    <a (click)="navigate('reports')" data-toggle="collapse" aria-expanded="false"
+                        class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Reports and
+                                Metrics</span>
+
+                        </div>
+                    </a>
+                    <!-- <a data-toggle="collapse" aria-expanded="false" (click)="toggelemp3pdfect()" class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span class="menu-collapsed"> toggelelustde</span>
+             
+                        </div>
+                    </a> -->
+
+                    <a (click)="navigate('flags')" data-toggle="collapse" aria-expanded="false"
+                        class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Flags</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer
+                                Registration</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('uploads')" data-toggle="collapse" aria-expanded="false"style="background-color: skyblue;"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/uploads.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Uploads</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('userList')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img src="./assets/dist/img/icons/user-group.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer List</span>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+
+<div class="col-10 pr-0">
+    <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+        <p>{{message}} </p>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" (click)="openCity('uploadPdf')">upload Pdf</button>
+        <button class="tablinks" (click)="openCity('uploadMP3')">upload MP3</button>
+     
+      </div>
+      
+      <div *ngIf="uploadPdfTab" class="tabcontent">
+        <h3>Upload pdf</h3>
+        <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select testament">Select bible version</label>
+            <select [(ngModel)]="SelectedVersion" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="ESV">ESV</option>
+                <option value="NASB">NASB</option>
+                <option value="NIV">NIV</option>
+            </select>
+        </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select testament">Select testament</label>
+            <select class="form-control" [(ngModel)]="SelectedTestament" value="{{SelectedTestament}}" (change)="getbiblebooks()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="OT">OT</option>
+                <option value="NT">NT</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select book">Select book</label>
+            <select class="form-control" [(ngModel)]="book"  (change)="SelectedBookChapters()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="book.BOOK_ABBR" *ngFor="let book of allbibleBooks"> {{book.BOOK}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">Select chapter</label>
+            <select [(ngModel)]="chapter" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="chap" *ngFor="let chap of chaptersInBook"> {{chap}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">Select file</label>
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">PDF Label to display</label>
+           <input type="text" [(ngModel)]="pdfLabel" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="btn-uploads">
+        <button (click)="Save('pdf')" class="btn btn-warning">Save </button>
+    </div>
+      </div>
+      
+      <div *ngIf="uploadMP3Tab" class="tabcontent">
+        <h3>Upload mp3</h3>
+        <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select testament">Select bible version</label>
+            <select [(ngModel)]="SelectedVersion" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="ESV">ESV</option>
+                <option value="NASB">NASB</option>
+                <option value="NIV">NIV</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select testament">Select testament</label>
+            <select [(ngModel)]="SelectedTestament" value="{{SelectedTestament}}" (change)="getbiblebooks()" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="OT">OT</option>
+                <option value="NT">NT</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select book">Select book</label>
+            <select [(ngModel)]="book"  (change)="SelectedBookChapters()" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="book.BOOK_ABBR" *ngFor="let book of allbibleBooks"> {{book.BOOK}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">Select chapter</label>
+            <select [(ngModel)]="chapter" class="form-control">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="chap" *ngFor="let chap of chaptersInBook"> {{chap}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">Select file</label>
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="mp3" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+            <label for="select chapter">MP3 Label to display</label>
+           <input type="text" [(ngModel)]="pdfLabel" class="form-control">
+            </div>
+        </div>
+    </div>
+
+        <div class="btn-uploads">
+            <button (click)="Save('mp3')" class="btn btn-warning">Save </button>
+        </div>
+      </div>
+  
+      
+     
+
+
+</div>
+</div>

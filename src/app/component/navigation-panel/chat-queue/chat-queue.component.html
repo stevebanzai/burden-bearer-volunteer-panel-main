@@ -1,0 +1,96 @@
+
+<div id="chat-queue-panel-wrapper" class="chat-queue-panel-wrapper minWidth" data-id="chat-queue-panel-wrapper">
+    <div class="chat-queue-panel-header" ondblclick="$('#chat-queue-panel-body').toggle()">
+        <div class="chat-queue-panel-header-left">
+            <img src="/assets/dist/img/icons/chat-queue-head-icon.png">
+            <span>Chat Queue</span>
+        </div>
+        <div class="chat-queue-panel-header-right">
+            <a href="javascript:expandCollapse('chat-queue-panel')" onclick="$('#chat-queue-panel-body,#chat-queue-panel').toggle()" id="chat-queue-panel-collapse-btn"><i class="fa fa-angle-right"></i></a>
+            <a href="javascript:void(0)" (click)="toggleclosebtn()" id="chat-queue-panel-close-btn"><i class="fa fa-close"></i></a>
+        </div>
+
+    </div>
+    <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+        <p>{{message}} </p>
+    </div>
+    <div class="chat-queue-panel-body" id="chat-queue-panel-body" style="display: block;height: 100% !important">
+        <div class="body-header-wrapper">
+            <div class="inQueue-wrapper"><button class="inQueue" (click)="toggleChatTabs('IQ')"  [ngClass]="{'ActiveTab' : InQueue}"><h5> In-Queue: <span>{{UserRoomList?.length}}</span> </h5></button></div>
+            <div class="ActiveLabel-wrapper"><button class="inQueue" (click)="toggleChatTabs('AAC')" [ngClass]="{'ActiveTab' : AllActiveChats}" style="    margin-top: -8px;">
+                <h5> Active: <span>{{AllActiveChatsData?.length}}</span></h5></button>
+                <i *ngIf="ActiveChatRefresh" class="fa fa-refresh refreshIcon" aria-hidden="true" (click)="refreshActiveChats()"></i>
+            </div>
+                
+            <!-- <div class="ActiveLabel-wrapper"><button class="inQueue" (click)="toggleChatTabs('ACL')" [ngClass]="{'ActiveTab' : AllOnlineUsersTab}" ><h5> All Chats: <span>{{AllOnlineUsersData?.length}}</span> </h5></button></div> -->
+
+        </div>
+        <div class="chat-panel-messages-body div1 gridster-item-content chat-msg">
+            <div class="chat-queue" id="InQueue" *ngIf="InQueue" style="display: block;">
+                <div class="chat-queue-data" (click)="onSelect(user.id, 'InQueue')" *ngFor="let user of UserRoomList;let i= index">
+                    <div class="title-wrapper">
+                        <div class="name">
+                            <h5>{{i +1 }} {{user.USER_NAME}} </h5>
+                        </div>
+
+                        <div class="time">
+                            <!-- <h6>{{timeNow | date: 'dd/MM/yyyy hh:mm' - user.createdAt | date: 'dd/MM/yyyy hh:mm' }}</h6> -->
+                            <h6>{{ user.createdAt |dateAgo}}</h6>
+                            <!-- <h6>{{ timeNow | date: 'dd/MM/yyyy hh:mm' }}</h6> -->
+                            <!-- <h6>{{todayISOString}} </h6> -->
+
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h6>{{user.TOPIC}}</h6>
+                    </div>
+                    <div class="full-detail">
+                        <!-- <h6>Tom 399</h6> -->
+                        <span>{{user.LAST_MESSAGE}}</span></div>
+                </div>
+
+            </div>
+            <div class="chat-queue" id="ActiveChats" *ngIf="AllActiveChats" style="display: block;">
+                <div class="chat-queue-data" (click)="onSelect(user.id, 'ActiveChats')"  *ngFor="let user of AllActiveChatsData;let i= index">
+                    <div class="title-wrapper">
+                        <div class="name">
+                            <h5>{{i +1 }} {{user.USER_NAME}} </h5>
+                        </div>
+
+                        <div class="time">
+                            <h6>{{user.createdAt |dateAgo}}</h6>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h6>{{user.TOPIC}}</h6>
+                    </div>
+                    <div class="full-detail">
+<span>
+{{user.LAST_MESSAGE}}
+</span> 
+               </div>
+
+            </div>
+            <!-- <div class="chat-queue" id="AllChats" *ngIf="AllOnlineUsersTab" style="display: block;">
+                <div class="chat-queue-data"  *ngFor="let user of AllOnlineUsersData;let i= index">
+                    <span class="dot" *ngIf="user.CHAT_FLAG_STATUS != 0"></span>
+                    <div class="title-wrapper">                       
+                        <div class="name" >                            <h5>  
+                                {{i +1 }} {{user.USER_NAME}} </h5>
+                        </div>
+                        <div class="time">
+                            <h6>1 min ago</h6>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h6>No hope at this point.</h6>
+                    </div>
+                    <div class="full-detail">
+                        <h6>Tom 399</h6><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</span></div>
+                </div>
+
+            </div> -->
+        </div>
+    </div>
+</div>
+</div>

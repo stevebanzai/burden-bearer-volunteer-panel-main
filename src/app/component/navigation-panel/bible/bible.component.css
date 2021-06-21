@@ -1,0 +1,62 @@
+.double1{color: #79500c !important;
+background-color: white !important;
+color: black !important;
+border-radius: 50% !important;}
+
+i{
+    display: inline-block;
+    color: #000;
+    font-weight: normal;
+    font-size: 24px;
+
+    /* margin-right: 6%; */
+}
+
+#bible-close-btn i {font-size: 14px; font-weight: normal;}
+
+.bibleBooks{
+    border: 1px solid black;
+    padding: 2px 4px 2px 4px;
+    text-align: center;
+}
+
+.noMargin{
+    margin-left: 0  !important;
+    margin-right: 0 !important;
+}
+
+.chapterListStyle{
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rightArrow{
+    
+    margin-left: 0% !important;
+  
+}
+
+.messageBox{
+    padding: 3px 3px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+
+.biblechapterTable{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+/* .borderdisplay{
+    
+    display: table;
+    margin: auto;
+    border: 1px solid black;
+
+} */
+
+.bible-navigation-dot-menu i {top: auto;}
+.bible-searchbar i {padding: 2px 13px;line-height: 26px;}

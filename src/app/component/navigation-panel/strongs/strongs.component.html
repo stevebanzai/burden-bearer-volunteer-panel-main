@@ -1,0 +1,160 @@
+<!-- <div class="grid-stack-item strong-verses-grid" id="strong-verses-grid" data-gs-height="11" data-gs-min-height="3" data-gs-min-width="2" data-gs-width="4" data-gs-x="5" data-gs-y="5"> -->
+<!-- <div class="grid-stack-item-content"> -->
+    <div class="strong-verses-wrapper" id="strong-verses-wrapper">
+        <div class="strong-verses-header" ondblclick="$('#strong-verses-body').toggle()">
+            <div class="strong-verses-header-left">
+                <img src="/assets/dist/img/icons/strong-verses-head-icon.png">
+                <span>Strong Verses</span>
+            </div>
+
+            <div class="strong-verses-header-right">
+                <a href="javascript:void(0)" onclick="$('#strong-verses-body').toggle()"
+                    id="cross-reference-collapse-btn"><i class="fa fa-angle-down"></i></a>
+                <a href="javascript:void(0)" (click)="toggleclose()" id="cross-reference-close-btn"><i
+                        class="fa fa-close"></i></a>
+            </div>
+
+        </div>
+
+        <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+            <p>{{message}} </p>
+        </div>
+        <!-- Cross Reference panel Body-->
+        <div class="strong-verses-body" id="strong-verses-body">
+            <div class="action-wrapper gridster-item-content" id="">
+                <div class="arrows-wrapper">
+                    <!-- <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+                    <h5 style="top: 0px !important;"><span class="brown">{{code}} - {{word}} </span></h5>
+                </div>
+                <a class="strong-verses-dot-menu" (click)="toggleShow()"><i class="fa fa-ellipsis-v"
+                        aria-hidden="true"></i></a>
+            </div>
+            <div class="strong-verses-body-inner" class="div1">
+                <div style="min-height: 0%; overflow-x: none;">
+                    <table>
+                        <tbody>
+                            <style>
+                                .div1 {
+                                    height: 400px;
+                                    overflow-y: scroll;
+                                }
+                            </style>
+
+
+
+
+
+
+                            <tr *ngFor="let ss of optResults">
+                                <td class="CR-tableLeft" *ngIf="isSearch">
+
+
+
+
+
+                                    <h5>{{ss.key}}</h5>
+                                    <div class="actionDiv" *ngIf="isShown" id="divshow">
+                                        <span class="cr" id="strong-verses-body" (click)="onSelect(ss.key)">CR</span>
+                                        <div class="add-with-action"><span class="add">Add</span>
+                                            <div class="strong-verses-action-list-outer">
+                                                <div class="strong-verses-action-list new">
+                                                    <div class="strong-verses-action-list-head">
+                                                        <h5>Add To<i class="fa fa-close"></i>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="strong-verses-action-list-body">
+
+                                                        <span (click)="onSubmit(ss.key,ss.preview)">Work Area</span>
+                                                        <span (click)="savejourney(ss.key,ss.preview)">Journey</span>
+                                                        <span (click)="savePersonalfav(ss.key,ss.preview)">Personal
+                                                            Favs</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                                <td class="CR-tableRight ">
+
+                                    <p>
+                                        {{ ss.preview}}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let ss of listverse">
+                                <td class="CR-tableLeft" *ngIf="!isSearch">
+                                    <h5>{{ss.division }} &nbsp;{{ss.topic_no }} </h5>
+
+                                    <div class="actionDiv " *ngIf="isShown">
+                                        <span class="cr "
+                                            onclick="crossRefBtn('cross-reference-wrapper') ">CR</span>
+                                        <span class="dropdown">
+                                            <span style="background: #ffce79; " class="btn" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                Add
+                                            </span>
+                                            <div style="background: #ffce79;" class="dropdown-menu "
+                                                aria-labelledby="dropdownMenuButton">
+
+                                                <a class="dropdown-item"
+                                                    (click)="onSubmit(ss.book ,ss.verse,ss.text)">Work Area</a>
+                                                <!-- <a class="dropdown-item"
+                                                    (click)="savejourney(vext,verse)">Journey</a>
+                                                <a class="dropdown-item"
+                                                    (click)="savePersonalfav(verseText,verse)">Personal
+                                                    Favs</a> -->
+
+                                            </div>
+
+                                        </span>
+                                    </div>
+                                    <!-- <div class="actionDiv" *ngIf="isShown" id="divshow">
+                                        <span class="cr" id="strong-verses-body">CR</span>
+                                        <div class="add-with-action"><span class="add">Add</span>
+                                            <div class="strong-verses-action-list-outer">
+                                                <div class="strong-verses-action-list new">
+                                                    <div class="strong-verses-action-list-head">
+                                                        <h5>Add To
+
+                                                        </h5>
+                                                    </div>
+                                                    <div class="strong-verses-action-list-body" *ngIf="toggleAddToDiv">
+                                                        <span (click)="onSubmit(ss.book, ss.verse,ss.text)">Work Area</span>
+                                                        <span (click)="savejourney(ss.verse,ss.text)">Journey</span>
+                                                        <span (click)="savePersonalfav(ss.verse,ss.text)">Personal
+                                                            Favs</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+                                    
+                                </td>
+                                <!-- <td class="CR-tableLeft">
+    
+                                        <h5>{{ss.key}}</h5>
+    
+                                    </td> -->
+
+                                <td class="CR-tableRight">
+                                    <p  innerHTML="{{ss.content | highlight : word}}">
+                                        
+                                    </p>
+                                </td>
+                            </tr>
+<!-- <span (click)="viewMore()">view more</span> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    <!-- </div> -->
+
+    <!-- </div> -->

@@ -1,0 +1,402 @@
+<div class="d-flex" style="overflow-x: hidden;">
+    <div [ngClass]="iscollapsed?'w50 ':'w190'" style="position: relative;">
+        <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
+
+        <!-- <div class="col-2"> -->
+        <div id="sidebar-container" [ngClass]="iscollapsed?'sidebar-collapsed':'sidebar-expanded'"
+            class="d-none d-md-block bg-light">
+            <a (click)="toggleSidebar()"
+            class=" text-dark sidenav-collapse">
+                <div class="nav-expand-close">
+                    <span id="collapse-icon" class="fa fa-angle-double-left icon-size"></span>
+                </div>
+            </a>
+            <div class="leftmenu-scroll">
+                <ul class="list-group">
+                    <div *ngFor="let item of data;let i = index;" id="cb_navbar-panel-panel-grid"
+                        style="margin-bottom: -24px">
+
+                        <button type="input" class="accordion" (click)="toggleAccordian($event, i)">
+                            <img src="/assets/dist/img/icons/sidebar-icons/panel-navigation-icon.png"
+                                style="margin-right: 10px;">
+                            <span id="collapse-text" [ngClass]="iscollapsed?'d-none':''"
+                                class="menu-collapsed menu-icon-left">Navigation Panel <i
+                                    class="fa fa-chevron-down"></i> </span>
+                        </button>
+                        <div class="panel" *ngIf="!item.isActive" id="menu-collepse">
+                            <ul>
+                                <li> <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                        (click)="toggleVisibility('chatQueueCB')">
+                                        <span class="menu-collapsed"><input [(ngModel)]="Compononent[0].is_active"
+                                                type="checkbox" name="Chat Queue"></span>
+                                        <span>
+                                            <label class="menusub" for="cb_chat-queue-panel-grid">Chat Queue</label>
+                                        </span>
+                                    </a>
+                                </li>
+
+
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('workareaCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[1].is_active"></span>
+                                    <span> <label class="menusub" for="cb_work-area-grid"> Work Area </label> </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('WorkAreaNotesCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[3].is_active"> </span>
+                                    <span>
+                                        <label class="menusub" for="cb_work-area-notes-grid">Work Area Notes</label>
+                                    </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('bibleCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[2].is_active"> </span>
+                                    <span>
+                                        <label class="menusub" for="cb_bible-grid">Bible</label>
+                                    </span>
+                                </a>
+
+
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('strongsCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[4].is_active"> </span>
+                                    <span> <label class="menusub" for="cb_strong-verses-grid">Strongs</label></span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('crossReferenceCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[5].is_active"> </span>
+                                    <span> <label class="menusub" for="cb_cross-reference-grid">Cross Reference</label>
+                                    </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('personalFavsCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[6].is_active"> </span>
+                                    <span>
+                                        <label class="menusub" for="cb_personal-favs-grid"> Personal Favs </label>
+                                    </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('chatHistoryCB')">
+                                    <span #pdf class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[7].is_active"></span>
+                                    <span>
+                                        <label class="menusub" for="cb_chat-history-panel-grid">Chat-History</label>
+                                    </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('calendarCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[8].is_active"></span>
+                                    <span>
+                                        <label class="menusub" for="cb_calendar-panel-grid">Calendar</label>
+                                    </span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('mp3TabCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[9].is_active"></span>
+                                    <span> <label class="menusub" for="cb_mp3-grid">Mp3’s, Clips</label></span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('pdfQuotesTabCB')">
+                                    <span class="menu-collapsed"><input type="checkbox"
+                                            [(ngModel)]="Compononent[10].is_active"> </span>
+                                    <span> <label class="menusub" for="cb_pdf-grid">PDF’s, Quotes</label></span>
+                                </a>
+
+                                <a class="list-group-item list-group-item-action bg-dark1 text-dark"
+                                    (click)="toggleVisibility('barnaStatisticsCB')">
+                                    <span class="menu-collapsed"> <input type="checkbox"
+                                            [(ngModel)]="Compononent[11].is_active"></span>
+                                    <span>
+                                        <label class="menusub" for="cb_barna-panel-grid">Barna Statistics</label>
+                                    </span>
+                                </a>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false"
+                        class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"
+                        style="background-color: skyblue;">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Dashboard</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Journey</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Chat</span>
+                        </div>
+                    </a>
+                    <a (click)="navigate('reports')" data-toggle="collapse" aria-expanded="false"
+                        class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Reports and
+                                Metrics</span>
+
+                        </div>
+                    </a>
+                    <!-- <a data-toggle="collapse" aria-expanded="false" (click)="toggelemp3pdfect()" class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span class="menu-collapsed"> toggelelustde</span>
+             
+                        </div>
+                    </a> -->
+
+                    <a (click)="navigate('flags')" data-toggle="collapse" aria-expanded="false"
+                        class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Flags</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer
+                                Registration</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('uploads')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/uploads.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Uploads</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('userList')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img src="./assets/dist/img/icons/user-group.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer List</span>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- </div> -->
+
+    </div>
+    <div [ngClass]="iscollapsed?'col-11':'col-10'" class="pr-0">
+        <!-- <app-playarea></app-playarea> -->
+        <gridster [options]="options " *ngIf="loaded " style="background: #fff;">
+
+            <!-- <gridster-item *ngIf="lustdecent " [item]="{cols: 3, rows: 2.2, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapselustdecent ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="lustTab " [ndcDynamicComponent]="LustDeceitCoverComponent ">
+                    </ndc-dynamic>
+                </gridster-item> -->
+
+            <!-- <gridster-item *ngIf="mp3TabCB " [item]="{cols: 3, rows: 2.2, y: 0, x: 0} " class="gridster-item-content" style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsemp3pdf ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="mp3pdfetcthis " [ndcDynamicComponent]="Mp3pdfetcComponent ">
+                    </ndc-dynamic>
+                </gridster-item> -->
+
+            <gridster-item *ngIf="Compononent[0].is_active" #abc
+                [item]="{cols: Compononent[0].cols, rows: Compononent[0].rows, y: Compononent[0].y, x: Compononent[0].x}"
+                class="gridster-item-content"
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapschatqueue ? 'chatcomponentclosed':'chatcomponentexpanded'"
+                (mouseover)="componentPicked('chatQueueCB')" (mouseout)="pickedComponent =null">
+                <ndc-dynamic [ndcDynamicOutputs]="chatQueueOutput" [ndcDynamicComponent]="component1">
+                </ndc-dynamic>
+            </gridster-item>
+
+
+
+            <!-- <gridster-item *ngIf="chat " [item]="{cols: 4.5, rows: 4, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsechat ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="chatthis " [ndcDynamicComponent]="component2 "></ndc-dynamic>
+                </gridster-item> -->
+
+            <!-- <gridster-item *ngIf="journry " [item]="{cols:3, rows: 3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseJourney ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="Journeythis " [ndcDynamicComponent]="component14 "></ndc-dynamic>
+                </gridster-item> -->
+
+
+            <!-- <gridster-item *ngIf="" [item]="{cols: 8, rows: 4, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseFlag ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="flagTab " [ndcDynamicComponent]="component16 "></ndc-dynamic>
+                </gridster-item> -->
+
+            <!-- <gridster-item *ngIf="reportmatric " [item]="{cols: 3, rows: 3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsereportmatric ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="reportab " [ndcDynamicComponent]="component15 "></ndc-dynamic>
+                </gridster-item> -->
+
+            <!-- <gridster-item *ngIf="volunteer " [item]="{cols: 5, rows: 7, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsevolunteer ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="volunteerTab " [ndcDynamicComponent]="component17 "></ndc-dynamic>
+                </gridster-item> -->
+
+
+            <div>
+                <gridster-item *ngIf="Compononent[7].is_active "
+                    [item]="{cols: Compononent[7].cols, rows: Compononent[7].rows, y: Compononent[7].y, x: Compononent[7].x}"
+                    class="gridster-item-content "
+                    style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                    (mouseover)="componentPicked('chatHistoryCB')" (mouseout)="pickedComponent =null"
+                    [ngClass]="collapsechathistory ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                    <ndc-dynamic [ndcDynamicOutputs]="chatHistoryOutput" [ndcDynamicComponent]="component3">
+                    </ndc-dynamic>
+                </gridster-item>
+            </div>
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[2].is_active"
+                [item]="{cols: Compononent[2].cols, rows: Compononent[2].rows, y: Compononent[2].y, x: Compononent[2].x}"
+                (mouseover)="componentPicked('bibleCB')" (mouseout)="pickedComponent =null "
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapseBible ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicOutputs]="bibleOutput" [ndcDynamicComponent]="component4 "></ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[5].is_active"
+                [item]="{cols: Compononent[5].cols, rows: Compononent[5].rows, y: Compononent[5].y, x: Compononent[5].x}"
+                (mouseover)="componentPicked('crossReferenceCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsecrossreference ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicOutputs]="crossCompOutput" [ndcDynamicComponent]="component5 "></ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[4].is_active"
+                [item]="{cols: Compononent[4].cols, rows: Compononent[4].rows, y: Compononent[4].y, x: Compononent[4].x}"
+                (mouseover)="componentPicked('strongsCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;">
+                <ndc-dynamic [ndcDynamicOutputs]="strongsOutput" [ndcDynamicComponent]="component6"></ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[1].is_active"
+                [item]="{cols: Compononent[1].cols, rows: Compononent[1].rows, y: Compononent[1].y, x: Compononent[1].x}"
+                (mouseover)="componentPicked('workareaCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content  "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;">
+                <!-- <ndc-dynamic [ndcDynamicInputs]="inputs" [ndcDynamicOutputs]="workAreaOutput" [ndcDynamicComponent]="component8 "></ndc-dynamic> -->
+                <app-work-area [DynamicInputs]="addedToWorkAreainput" (workAreaoutput)="workAreaOutput($event)">
+                </app-work-area>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- <app-pdfupload></app-pdfupload> -->
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[3].is_active"
+                [item]="{cols: Compononent[3].cols, rows: Compononent[3].rows, y: Compononent[3].y, x: Compononent[3].x}"
+                (mouseover)="componentPicked('WorkAreaNotesCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapseWorkAreaNotes ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicOutputs]="workAreaNotesOutput" [ndcDynamicComponent]="component9 ">
+                </ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[8].is_active"
+                [item]="{cols: Compononent[8].cols, rows: Compononent[8].rows, y: Compononent[8].y, x: Compononent[8].x}"
+                (mouseover)="componentPicked('calendarCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsecalendar ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicComponent]="component11 " [ndcDynamicOutputs]="calendarOutput"></ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[9].is_active"
+                [item]="{cols: Compononent[9].cols, rows: Compononent[9].rows, y: Compononent[9].y, x: Compononent[9].x}"
+                (mouseover)="componentPicked('mp3TabCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsecalendar ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicComponent]="component7 " [ndcDynamicOutputs]="mp3Output">
+                </ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[10].is_active"
+                [item]="{cols: Compononent[10].cols, rows: Compononent[10].rows, y: Compononent[10].y, x: Compononent[10].x}"
+                (mouseover)="componentPicked('pdfQuotesTabCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsepdfquotes ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicComponent]="component12 " [ndcDynamicOutputs]="pdfOutput">
+                </ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[6].is_active"
+                [item]="{cols: Compononent[6].cols, rows: Compononent[6].rows, y: Compononent[6].y, x: Compononent[6].x}"
+                (mouseover)="componentPicked('personalFavsCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsepersonalfavs ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicOutputs]="personalFavsOutput" [ndcDynamicComponent]="component13 ">
+                </ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- <div class="col-3 "> -->
+            <gridster-item *ngIf="Compononent[11].is_active "
+                [item]="{cols: Compononent[11].cols, rows: Compononent[11].rows, y: Compononent[11].y, x: Compononent[11].x}"
+                (mouseover)="componentPicked('barnaStatisticsCB')" (mouseout)="pickedComponent =null"
+                class="gridster-item-content "
+                style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;"
+                [ngClass]="collapsebarnastatistics ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                <ndc-dynamic [ndcDynamicOutputs]="barnastaticsthis " [ndcDynamicComponent]="component10 ">
+                </ndc-dynamic>
+            </gridster-item>
+            <!-- </div> -->
+            <!-- div -->
+            <!-- <gridster-item *ngIf="Compononent[12].is_active " [item]="{cols: Compononent[12].cols, rows: Compononent[12].rows, y: Compononent[12].y, x: Compononent[12].x}"
+                (mouseover)="componentPicked('userListCB')" (mouseout)="pickedComponent =null" class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseuserlist ? 'chatcomponentclosed':'chatcomponentexpanded'">
+                     <ndc-dynamic [ndcDynamicOutputs]="userlistthis" [ndcDynamicComponent]="component18 ">
+                     </ndc-dynamic>
+                 </gridster-item> -->
+        </gridster>
+    </div>
+</div>

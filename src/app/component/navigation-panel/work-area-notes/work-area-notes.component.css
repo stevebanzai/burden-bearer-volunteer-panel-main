@@ -1,0 +1,36 @@
+.messageBox{
+    padding: 3px 3px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+
+.updationinprogress{
+    background-color: yellow;
+    /* border-radius: 35px; */
+}
+
+.cancelupdatebtn{
+    background: #ffd58c;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 60px;
+}
+
+.angular-editor-toolbar .angular-editor-toolbar-set .angular-editor-button {
+    background-color: transparent !important;
+    vertical-align: middle;
+    border: 0px solid #ddd !important;
+    padding: .4rem;
+    min-width: 2.5rem !important;
+    float: left;
+}
+
+button#bold-Notes {
+    background: transparent;
+    border: 0;
+    font-size: 14px;
+    width: 2.5em;
+}

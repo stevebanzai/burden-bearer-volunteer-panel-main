@@ -1,0 +1,9 @@
+.messageBox{
+    padding: 3px 3px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+mark{
+    color: red !important;
+}

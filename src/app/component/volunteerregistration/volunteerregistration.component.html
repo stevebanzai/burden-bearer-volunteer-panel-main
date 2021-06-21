@@ -1,0 +1,261 @@
+<div class="volunteer-panel-wrapper1" id="volunteer-panel-wrapper">
+    <div class="volunteer-panel-header"  style="width: 100%;">
+        <div class="volunteer-panel-header-left tab1">
+            <img src="/assets/dist/img/icons/user-group.png">
+            <span>Burden Bearer Volunteer Registration</span>
+        </div>
+        <div class="volunteer-panel-header-left tab2" style="display:none;">
+            <img src="/assets/dist/img/icons/disposition.png">
+            <span>Disposition</span>
+        </div>
+        <div class="volunteer-panel-header-left tab3" style="display:none;">
+            <img src="/assets/dist/img/icons/user.png">
+            <span>Choose Avatar</span>
+        </div>
+        <div class="volunteer-panel-header-right">
+            <!-- <a href="javascript:void(0)" onclick="$('#volunteer-panel-body').toggle()" id="pdf-panel-collapse-btn"><i
+                    class="fa fa-angle-down"></i></a> -->
+            <!-- <a href="javascript:void(0)" (click)="toggleclosebtn()" id="volunteer-panel-close-btn"><i
+                    class="fa fa-close"></i></a> -->
+        </div>
+    </div>
+
+
+
+    <div class="volunteer-panel-body " style="overflow-y:scroll;" id="volunteer-panel-body">
+        <div class="tab tab1">
+            <form *ngIf="!isSuccessful" [formGroup]="volnteerForm" (ngSubmit)="onSubmit()">
+
+                <!-- <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate> -->
+                <div class="top-part">
+                    <div class="links">
+                        <div style=" text-align: center;
+                        color: #4CAF50; font-size: 14px;"> {{message}}</div>
+
+                        <a class="active" routerLink="/userList">All Users</a>
+                        <!-- <a href="javascript:void(0)">Users Group</a> -->
+                    </div>
+                    <span><span>*</span> (Required)</span>
+                </div>
+                <div class="main-part gridster-item-content" *ngIf="currentPage == 0">
+
+                    <div class="form-group">
+                        <label>*Username</label>
+                        <input type="text" class="form-control" formControlName="username" placeholder=" Enter username"
+                            required>
+                        <span class="text-danger"
+                            *ngIf="(f.username.touched || submitted) && f.username.errors?.required ">
+                            User Name is Required
+                        </span>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label style="font-size: 11px;">*Password<span>(8 Characters or more including 1 numeric and 1 Special
+                                Character)</span></label>
+                        <input type="password" class="form-control" name="password" formControlName="password"
+                            placeholder="Enter password" />
+                        <span class="text-danger"
+                            *ngIf="(f.password.touched || submitted) && f.password.errors?.required ">
+                            Password is required
+                        </span>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>*Verify Password</label>
+                        <input type="password" name="confirmPassword" class="form-control"
+                            formControlName="confirmPassword" placeholder="Enter confirm passwword">
+                        <span class="text-danger"
+                            *ngIf="(f.confirmPassword.touched || submitted) && f.confirmPassword.errors?.required ">
+                            Confirm Password is required
+                        </span>
+                        <br>
+                        <span class="text-danger" *ngIf="(f.confirmPassword.touched || submitted) && f.confirmPassword.errors">Password & confirm password
+                            don't match</span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-multi-group">
+                        <div class="form-group">
+                            <label>*Name</label>
+                            <input type="text" class="form-control" formControlName="first_name"
+                                placeholder="Enter first name">
+                            <span class="text-danger"
+                                *ngIf="(f.first_name.touched || submitted) && f.first_name.errors?.required ">
+                                First Name is required
+                            </span>
+                        </div>
+                        <div class="form-group fixed-small-width">
+                            <label>&nbsp;Middle Init</label>
+                            <input type="text" class="form-control" name="middle_name" formControlName="middle_name"
+                                placeholder="Middel name">
+
+                        </div>
+                        <div class="form-group">
+                            <label>*Last</label>
+                            <input type="text" class="form-control" formControlName="last_name"
+                                placeholder="Enter last name">
+                            <span class="text-danger"
+                                *ngIf="(f.last_name.touched || submitted) && f.last_name.errors?.required ">
+                                Last Name is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>*Gender</label>
+                            <select name="gender" id="gender" class="form-control" formControlName="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="m">male</option>
+                                <option value="f">female</option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="(f.gender.touched || submitted) && f.gender.errors?.required ">
+                                Gender is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>*Email</label>
+                            <input type="email" class="form-control" name="email" formControlName="email"
+                                placeholder="Enter email id" />
+                            <span class="text-danger"
+                                *ngIf="(f.email.touched || submitted) && f.email.errors?.required ">
+                                Email Id is required
+                            </span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-multi-group1">
+                        <div class="form-group">
+                            <label>*Country</label>
+                            <select name="Country" class="form-control" id="country" (change)="seletcountry()"
+                                formControlName="country" required>
+                                <option value="">Select country</option>
+                                <option *ngFor="let country of list" value="{{country.id}}">{{country.country_name}}
+                                </option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="(f.country.touched || submitted) && f.country.errors?.required ">
+                                Country Name is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>*State</label>
+                            <select name="state" class="form-control" id="state" (change)="selectstate(form.state)"
+                                formControlName="state">
+                                <option value="">Select state</option>
+                                <option *ngFor="let state of stateList" value="{{state.state_name}}">{{state.state_name}}
+                                </option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="(f.state.touched || submitted) && f.state.errors?.required ">
+                                State Name is required
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>*City</label>
+                            <select name="city" formControlName="city" required>
+                                <option value="">Select city</option>
+                                <option *ngFor="let city of citylist" [value]="city.city_name">{{city.city_name}}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="(f.city.touched || submitted) && f.city.errors?.required ">
+                                City Name is required
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>YOB</label>
+                            <select name="yob" formControlName="year">
+                                <option value="">Select Yob</option>
+                                <option *ngFor="let year of years | reverse" value="{{year.year}}">{{year.year}}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="(f.city.touched || submitted) && f.city.errors?.required ">
+                                Year of Birth is required
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label>*TMZ</label>
+                        <select name="time_zone" formControlName="time_zone">
+                            <option value="">Select Time Zone</option>
+                            <option *ngFor="let item of Timezone" value="{{item.value}}">{{item.text}}</option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="(f.time_zone.touched || submitted) && f.time_zone.errors?.required ">
+                            TimeZone is required
+                        </span>
+                    </div>
+                    <div class="main-part1">
+                        <div class="form-group">
+                            <label>*Church Name</label>
+                            <input type="text" placeholder="Enter church name" name="church_name" class="form-control"
+                                formControlName="church_name" required>
+                            <span class="text-danger"
+                                *ngIf="(f.church_name.touched || submitted) && f.church_name.errors?.required ">
+                                Church Name is required
+                            </span>
+                        </div>
+                        <div class="form-multi-group2">
+                            <div class="form-group">
+                                <label>*Pastor Name</label>
+                                <input type="text" class="form-control" placeholder="Enter pastor name"
+                                    formControlName="paster_name" name="paster_name" required>
+                                <span class="text-danger"
+                                    *ngIf="(f.paster_name.touched || submitted) && f.paster_name.errors?.required ">
+                                    Paster Name is required
+                                </span>
+                            </div>
+                            <div class="form-group fixed-small-width">
+                                <label>*Phone</label>
+                                <input type="number" class="form-control" formControlName="phone_no" name="phone_no"
+                                    required>
+                                <span class="text-danger"
+                                    *ngIf="(f.phone_no.touched || submitted) && f.phone_no.errors?.required ">
+                                    Phone Number is required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-multi-group3">
+                            <div class="form-group">
+                                <label>*State</label>
+                                <select name="church_state" formControlName="church_state" id="church_state"
+                                    (change)="selectstate(church_state)" required>
+                                    <option value="">Select State</option>
+                                    <option *ngFor="let state of stateList" value="{{state.state_name}}">{{state.state_name}}
+                                    </option>
+                                </select>
+                                <span class="text-danger"
+                                    *ngIf="(f.church_state.touched || submitted) && f.church_state.errors?.required ">
+                                    Church State is required
+                                </span>
+                            </div>
+                            <div class="form-group fixed-small-width">
+                                <label>*City</label>
+                                <select name="church_city" formControlName="church_city" required>
+                                    <option value="">Select City</option>
+                                    <option *ngFor="let city of citylist" [value]="city.city_name">{{city.city_name}}
+                                    </option>
+                                </select>
+                                <span class="text-danger"
+                                    *ngIf="(f.church_city.touched || submitted) && f.church_city.errors?.required ">
+                                    church City is required
+                                </span>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="button-wrapper">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

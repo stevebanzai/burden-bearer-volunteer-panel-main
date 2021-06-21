@@ -1,0 +1,107 @@
+<gridster [options]="options " *ngIf="loaded " style="background: #fff; ">
+
+    <gridster-item *ngIf="lustdecent " [item]="{cols: 3, rows: 2.2, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapselustdecent ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="lustTab " [ndcDynamicComponent]="LustDeceitCoverComponent ">
+        </ndc-dynamic>
+    </gridster-item>
+
+    <gridster-item *ngIf="mp3pdfetc " [item]="{cols: 3, rows: 2.2, y: 0, x: 0} " class="gridster-item-content" style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsemp3pdf ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="mp3pdfetcthis " [ndcDynamicComponent]="Mp3pdfetcComponent ">
+        </ndc-dynamic>
+    </gridster-item>
+
+    <gridster-item *ngIf="chatqueue " [item]="{cols: 3.5, rows: 3, y: 0, x: 0} " class="gridster-item-content" style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapschatqueue ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="chatquee " [ndcDynamicComponent]="component1 ">
+        </ndc-dynamic>
+    </gridster-item>
+
+
+
+    <gridster-item *ngIf="chat " [item]="{cols: 4.5, rows: 4, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsechat ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="chatthis " [ndcDynamicComponent]="component2 "></ndc-dynamic>
+    </gridster-item>
+
+    <gridster-item *ngIf="journry " [item]="{cols:3, rows: 3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseJourney ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="Journeythis " [ndcDynamicComponent]="component14 "></ndc-dynamic>
+    </gridster-item>
+
+
+    <gridster-item *ngIf="flag" [item]="{cols: 8, rows: 4, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseFlag ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="flagTab " [ndcDynamicComponent]="component16 "></ndc-dynamic>
+    </gridster-item>
+
+    <gridster-item *ngIf="reportmatric " [item]="{cols: 3, rows: 3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsereportmatric ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="reportab " [ndcDynamicComponent]="component15 "></ndc-dynamic>
+    </gridster-item>
+
+    <gridster-item *ngIf="volunteer " [item]="{cols: 5, rows: 7, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsevolunteer ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="volunteerTab " [ndcDynamicComponent]="component17 "></ndc-dynamic>
+    </gridster-item>
+
+
+    <div>
+        <gridster-item *ngIf="chathistory " [item]="{cols: 4.5, rows: 3.5, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsechathistory ? 'chatcomponentclosed':'chatcomponentexpanded'">
+            <ndc-dynamic [ndcDynamicOutputs]="chathist " [ndcDynamicComponent]="component3 "></ndc-dynamic>
+        </gridster-item>
+    </div>
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="bible " [item]="{cols: 4, rows: 5.3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseBible ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic (isbiblecom)='biblecom($event)' [ndcDynamicOutputs]="biblethis " [ndcDynamicComponent]="component4 "></ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="crossreference " [item]="{cols: 3.5, rows: 4.7, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsecrossreference ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="corssref " [ndcDynamicComponent]="component5 "></ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="strongs " [item]="{cols: 4, rows: 7, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;">
+        <ndc-dynamic [ndcDynamicOutputs]="strongsthis " [ndcDynamicComponent]="component6 "></ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="workarea " [item]="{cols: 4, rows: 4.5, y: 0, x: 0} " class="gridster-item-content  " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;">
+        <ndc-dynamic [ndcDynamicOutputs]="workareathis " [ndcDynamicComponent]="component8 "></ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+    <!-- <app-pdfupload></app-pdfupload> -->
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="WorkAreaNotes " [item]="{cols: 4, rows: 4.5, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapseWorkAreaNotes ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="workareanotethis " [ndcDynamicComponent]="component9 ">
+        </ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="calendar " [item]="{cols: 5, rows: 3.8 , y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsecalendar ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicComponent]="component11 " [ndcDynamicOutputs]="calenderthis "></ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="mp3clips " [item]="{cols: 4, rows: 4, y: 0, x: 0} " class="gridster-item-content ">
+        <ndc-dynamic (thismp3)='mp3com($event)' [ndcDynamicComponent]="component7 " [ndcDynamicOutputs]="mp3this " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;">
+        </ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="pdfquotes " [item]="{cols: 4, rows: 4.5, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsepdfquotes ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicComponent]="component12 " [ndcDynamicOutputs]="pdfthis ">
+        </ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="personalfavs " [item]="{cols: 6, rows: 5.4, y: 0, x: 0} " class="gridster-item-content "  [ngClass]="collapsepersonalfavs ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="psersonafavthis " [ndcDynamicComponent]="component13 ">
+        </ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+    <!-- <div class="col-3 "> -->
+    <gridster-item *ngIf="barnastatistics " [item]="{cols: 3, rows: 3, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsebarnastatistics ? 'chatcomponentclosed':'chatcomponentexpanded'">
+        <ndc-dynamic [ndcDynamicOutputs]="barnastaticsthis " [ndcDynamicComponent]="component10 ">
+        </ndc-dynamic>
+    </gridster-item>
+    <!-- </div> -->
+</gridster>

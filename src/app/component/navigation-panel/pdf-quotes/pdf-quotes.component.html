@@ -1,0 +1,402 @@
+<!-- <div class="grid-stack-item ui-draggable ui-resizable ui-resizable-autohide" >
+    <div class="grid-stack-item-content ui-draggable-handle"> -->
+
+
+        <!-- Personal Verse Favs Master Div -->
+        <div class="pdf-wrapper" id="pdf-wrapper">
+
+            <!-- Personal Favs Header-->
+            <!-- <div class="pdf-header" ondblclick="$('#pdf-body').toggle()">
+                <div class="pdf-header-left">
+                    <img src="/assets/dist/img/icons/pdf-icon.png">
+                    <span>Pdf's</span>
+                </div>
+                <div class="pdf-header-right">
+                    <a class="pdf-dot-menu" href="javascript:void(0)" onclick="$('#pdf-add').toggle();"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                    <a href="javascript:void(0)" (click)="toggleclose()" id="pdf-close-btn"><i class="fa fa-close"></i></a>
+                </div>
+            </div> -->
+
+
+            <div class="bible-header">
+                <div class="bible-header-left">
+                    <img src="/assets/dist/img/icons/bible-head-icon.png">
+                    <span>Pdf & Quotes</span>
+                </div>
+                <div class="bible-header-right">
+                    <!-- <a><i class="fa fa-upload" aria-hidden="true" (click)="toggleUpload()"></i>
+                    </a> -->
+                    <a href="javascript:void(0)" (click)="toggle()" id="bible-close-btn"><img
+                            src="/assets/dist/img/icons/bible-testament-icon.png"></a>
+                    <a href="javascript:void(0)" (click)="togglecloseb()" id="bible-close-btn"><i
+                            class="fa fa-close"></i></a>
+                </div>
+            </div>
+
+        <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+            <p>{{message}} </p>
+        </div>
+
+            <div class="bible-body" id="bible-body" *ngIf="!uploadTab">
+                <div class="buttons" *ngIf="show">
+                    <button class="ot" name="ot" (click)="toggleTestament(1)">OT</button>
+                    <button class="nt" (click)="toggleTestament(2)">NT</button>
+                </div>
+                <div class="testament gridster-item-content" *ngIf="oldTestament">
+                    <h5 *ngIf="this.SelectedTestament == 'OT'">Old Testament</h5>
+                    <h5 *ngIf="this.SelectedTestament == 'NT'">New Testament</h5>
+                    <div >
+                        <div class="row biblechapterTable" *ngIf="oldTestament">
+                            <div class="col-1 borderdisplay" *ngFor="let item of allbibleChapters">
+                                <span (click)="bookChapters(item.BOOK_ABBR)">{{item.BOOK_ABBR}}</span>
+                                
+                            </div>
+        
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <!-- <table class="gridster-item-content">
+                            <tr>
+                                <td name="gen" value="Gen" (click)="toggleDisplayDiv1('Gen',50)">Gen</td>
+                                <td name="exo" value="exo" (click)="toggleDisplayDiv1('Exod',40)">Exo</td>
+                                <td name="gen" value="lev" (click)="toggleDisplayDiv1('Lev',27)">Lev</td>
+                                <td name="num" value="num" (click)="toggleDisplayDiv1('num',36)">Num</td>
+                                <td name="Deu" value="Deu" (click)="toggleDisplayDiv1('Deut',34)">Deu</td>
+                                <td name="Jos" value="Jos" (click)="toggleDisplayDiv1('Josh',24)"> Jos</td>
+                                <td name="Jud" value="Jud" (click)="toggleDisplayDiv1('Judg',21)">Jud</td>
+                                <td name="Ruth" value="Ruth" (click)="toggleDisplayDiv1('Ruth',4)">Ruth</td>
+                                <td name="1Sa" value="Sam" (click)="toggleDisplayDiv1('1Sam',31)">1Sa</td>
+                                <td name="2Sam" value="2Sam" (click)="toggleDisplayDiv1('2Sam',24)">2Sam</td>
+    
+                            </tr>
+                            <tr>
+                                <td name="1ki" value="1Ki" (click)="toggleDisplayDiv1('1Ki',22)">1Ki</td>
+                                <td name="2Kin" value="2Kin" (click)="toggleDisplayDiv1('2Kin',25)">2Kin</td>
+                                <td name="1Ch" value="1Ch" (click)="toggleDisplayDiv1('1Chr',29)">1Ch</td>
+                                <td name="2Ch" value="2Ch" (click)="toggleDisplayDiv1('2Chr',36)">2Ch</td>
+                                <td name="Est" value="Est" (click)="toggleDisplayDiv1('Esth',10)">Est</td>
+                                <td name="Job" value="Job" (click)="toggleDisplayDiv1('Job',42)">Job</td>
+                                <td name="Neh" value="Neh" (click)="toggleDisplayDiv1('Neh',13)">Neh</td>
+                                <td name="Psa" value="psa" (click)="toggleDisplayDiv1('Psa',150)">Psa</td>
+                                <td name="Pro" value="Pro" (click)="toggleDisplayDiv1('Prov',31)">Pro</td>
+                                <td name="Ecc" value="Ecc" (click)="toggleDisplayDiv1('Eccl',12)">Ecc</td>
+                            </tr>
+                            <tr>
+                                <td name="Sos" value="Sos" (click)="toggleDisplayDiv1('Sos',8)">Sos</td>
+                                <td name="Isa" value="Isa" (click)="toggleDisplayDiv1('Isa',66)">Isa</td>
+                                <td name="Jer" value="Jer" (click)="toggleDisplayDiv1('Jer',52)">Jer</td>
+                                <td name="Lam" value="Lam" (click)="toggleDisplayDiv1('Lam',5)">Lam</td>
+                                <td name="Eze" value="Eze" (click)="toggleDisplayDiv1('Ezek',48)">Eze</td>
+                                <td name="Dan" value="Dan" (click)="toggleDisplayDiv1('Dan',12)">Dan</td>
+                                <td name="Hos" value="Hos" (click)="toggleDisplayDiv1('Hos',14)">Hos</td>
+                                <td name="Joe" value="Joe" (click)="toggleDisplayDiv1('Joel',3)">Joe</td>
+                                <td name="Amo" value="Amo" (click)="toggleDisplayDiv1('Amos',9)">Amo</td>
+                                <td name="Oba" value="Oba" (click)="toggleDisplayDiv1('Obad',1)">Oba</td>
+                            </tr>
+                            <tr>
+                                <td name="Jon" value="Jon" (click)="toggleDisplayDiv1('Jonah',4)">Jon</td>
+                                <td name="Mic" value="Mic" (click)="toggleDisplayDiv1('Mic',7)">Mic</td>
+                                <td name="Nah" value="Nah" (click)="toggleDisplayDiv1('Nah',3)">Nah</td>
+                                <td name="Hab" value="Hab" (click)="toggleDisplayDiv1('Hab',3)">Hab</td>
+                                <td name="Zep" value="Zep" (click)="toggleDisplayDiv1('Zeph',3)">Zep</td>
+                                <td name="Hag" value="Hag" (click)="toggleDisplayDiv1('Hag',2)">Hag</td>
+                                <td name="Zec" value="Zec" (click)="toggleDisplayDiv1('Zech',14)">Zec</td>
+                                <td name="Mal" value="Mal" (click)="toggleDisplayDiv1('Mal',4)">Mal</td>
+                            </tr>
+                        </table> -->
+                    </div>
+                </div >
+                <!-- <div class="testament gridster-item-content" *ngIf="newTestament">
+                    <h5>New Testament</h5>
+                    <div>
+                        <table class="gridster-item-content">
+                            <tr>
+                                <td value="28" (click)="toggleDisplayDiv1('matt',28)">Mat</td>
+                                <td value="Mar" (click)="toggleDisplayDiv1('Mark',16)">Mar</td>
+                                <td value="Luk" (click)="toggleDisplayDiv1('Luke',23)">Luk</td>
+                                <td value="Jhn" (click)="toggleDisplayDiv1('Jhn',20)">Jhn</td>
+                                <td value="Act" (click)="toggleDisplayDiv1('Acts',27)">Act</td>
+                                <td value="1Co" (click)="toggleDisplayDiv1('1Cor',16)">1Co</td>
+                                <td value="2Co" (click)="toggleDisplayDiv1('2Cor',13)">2Co</td>
+                                <td value="Gal" (click)="toggleDisplayDiv1('Gal',6)">Gal</td>
+                                <td value="Eph" (click)="toggleDisplayDiv1('Eph',6)">Eph</td>
+                                <td value="Phl" (click)="toggleDisplayDiv1('Phlm',4)">Phl</td>
+                            </tr>
+                            <tr>
+                                <td value="Col" (click)="toggleDisplayDiv1('Col',4)">Col</td>
+                                <td value="1Th" (click)="toggleDisplayDiv1('1thess',5)">1Th</td>
+                                <td value="2Th" (click)="toggleDisplayDiv1('2thess',3)">2Th</td>
+                                <td value="1Ti" (click)="toggleDisplayDiv1('1tim',6)">1Ti</td>
+                                <td value="2Ti" (click)="toggleDisplayDiv1('2tim',4)">2Ti</td>
+                                <td value="Tit" (click)="toggleDisplayDiv1('titus',3)">Tit</td>
+                                <td value="Phm" (click)="toggleDisplayDiv1('Phm',1)">Phm</td>
+                                <td value="Heb" (click)="toggleDisplayDiv1('Heb',13)">Heb</td>
+                                <td value="Jas" (click)="toggleDisplayDiv1('Jas',5)">Jas</td>
+                                <td value="1Pe" (click)="toggleDisplayDiv1('1pet',5)">1Pe</td>
+                            </tr>
+                            <tr>
+                                <td value="2Pe" (click)="toggleDisplayDiv1('2pet',3)">2Pe</td>
+                                <td value="1Jo" (click)="toggleDisplayDiv1('1john',5)">1Jo</td>
+                                <td value="2Jo" (click)="toggleDisplayDiv1('2john',1)">2Jo</td>
+                                <td value="3Jo" (click)="toggleDisplayDiv1('3john',1)">3Jo</td>
+                                <td value="Jde" (click)="toggleDisplayDiv1('Jde',1)">Jde</td>
+                                <td value="Rev" (click)="toggleDisplayDiv1('Rev',21)">Rev</td>
+                            </tr>
+                        </table>
+                        </div>
+                </div>
+     -->
+                <!-- <div class="testament gridster-item-content" *ngIf="hideVerses" [hidden]="number1" [hidden]="!oldTestament">
+                    <h5>Old Testament</h5>
+                    <div>
+                        <table class="gridster-item-content" (click)="toogelehide()">
+                            <tr>
+                                <td name="gen" value="Gen" (click)="toggleDisplayDiv1('Gen',50)">Gen</td>
+                                <td name="gen" value="exo" (click)="toggleDisplayDiv1('Exod',40)">Exo</td>
+                                <td name="gen" value="lev" (click)="toggleDisplayDiv1('Lev',27)">Lev</td>
+                                <td name="num" value="num" (click)="toggleDisplayDiv1('num',36)">Num</td>
+                                <td name="Deu" value="Deu" (click)="toggleDisplayDiv1('Deut',34)">Deu</td>
+                                <td name="Jos" value="Jos" (click)="toggleDisplayDiv1('Josh',24)"> Jos</td>
+                                <td name="Jud" value="Jud" (click)="toggleDisplayDiv1('Judg',21)">Jud</td>
+                                <td name="Ruth" value="Ruth" (click)="toggleDisplayDiv1('Ruth',4)">Ruth</td>
+                                <td name="1Sa" value="1Sa" (click)="toggleDisplayDiv1('1Sam',31)">1Sa</td>
+                                <td name="2Sam" value="2Sam" (click)="toggleDisplayDiv1('2Sam',24)">2Sam</td>
+    
+                            </tr>
+                            <tr>
+                                <td name="1ki" value="1Ki" (click)="toggleDisplayDiv1('1Ki',22)">1Ki</td>
+                                <td name="2Kin" value="2Kin" (click)="toggleDisplayDiv1('2Kin',25)">2Kin</td>
+                                <td name="1Ch" value="1Ch" (click)="toggleDisplayDiv1('1Chr',29)">1Ch</td>
+                                <td name="2Ch" value="2Ch" (click)="toggleDisplayDiv1('2Chr',36)">2Ch</td>
+                                <td name="Est" value="Est" (click)="toggleDisplayDiv1('Esth',10)">Est</td>
+                                <td name="Job" value="Job" (click)="toggleDisplayDiv1('Job',42)">Job</td>
+                                <td name="Neh" value="Neh" (click)="toggleDisplayDiv1('Neh',13)">Neh</td>
+                                <td name="Psa" value="psa" (click)="toggleDisplayDiv1('Psa',150)">Psa</td>
+                                <td name="Pro" value="Pro" (click)="toggleDisplayDiv1('Prov',31)">Pro</td>
+                                <td name="Ecc" value="Ecc" (click)="toggleDisplayDiv1('Eccl',12)">Ecc</td>
+                            </tr>
+                            <tr>
+                                <td name="Sos" value="Sos" (click)="toggleDisplayDiv1('Sos',8)">Sos</td>
+                                <td name="Isa" value="Isa" (click)="toggleDisplayDiv1('Isa',66)">Isa</td>
+                                <td name="Jer" value="Jer" (click)="toggleDisplayDiv1('Jer',52)">Jer</td>
+                                <td name="Lam" value="Lam" (click)="toggleDisplayDiv1('Lam',5)">Lam</td>
+                                <td name="Eze" value="Eze" (click)="toggleDisplayDiv1('Ezek',48)">Eze</td>
+                                <td name="Dan" value="Dan" (click)="toggleDisplayDiv1('Dan',12)">Dan</td>
+                                <td name="Hos" value="Hos" (click)="toggleDisplayDiv1('Hos',14)">Hos</td>
+                                <td name="Joe" value="Joe" (click)="toggleDisplayDiv1('Joel',3)">Joe</td>
+                                <td name="Amo" value="Amo" (click)="toggleDisplayDiv1('Amos',9)">Amo</td>
+                                <td name="Oba" value="Oba" (click)="toggleDisplayDiv1('Obad',1)">Oba</td>
+                            </tr>
+                            <tr>
+                                <td name="Jon" value="Jon" (click)="toggleDisplayDiv1('Jonah',4)">Jon</td>
+                                <td name="Mic" value="Mic" (click)="toggleDisplayDiv1('Mic',7)">Mic</td>
+                                <td name="Nah" value="Nah" (click)="toggleDisplayDiv1('Nah',3)">Nah</td>
+                                <td name="Hab" value="Hab" (click)="toggleDisplayDiv1('Hab',3)">Hab</td>
+                                <td name="Zep" value="Zep" (click)="toggleDisplayDiv1('Zeph',3)">Zep</td>
+                                <td name="Hag" value="Hag" (click)="toggleDisplayDiv1('Hag',2)">Hag</td>
+                                <td name="Zec" value="Zec" (click)="toggleDisplayDiv1('Zech',14)">Zec</td>
+                                <td name="Mal" value="Mal" (click)="toggleDisplayDiv1('Mal',4)">Mal</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div> -->
+    
+                <!-- <div class="testament gridster-item-content" (click)="toogelehide()" *ngIf="hideVerses" [hidden]="number1"
+                    [hidden]="!newTestament" id="collpse-ot-nt">
+                    <h5>New Testament</h5>
+                    <div>
+                        <table class="gridster-item-content">
+                            <tr>
+                                <td value="28" (click)="toggleDisplayDiv1('matt',28)">Mat</td>
+                                <td value="Mar" (click)="toggleDisplayDiv1('Mark',16)">Mar</td>
+                                <td value="Luk" (click)="toggleDisplayDiv1('Luke',23)">Luk</td>
+                                <td value="Jhn" (click)="toggleDisplayDiv1('Jhn',20)">Jhn</td>
+                                <td value="Act" (click)="toggleDisplayDiv1('Acts',27)">Act</td>
+                                <td value="1Co" (click)="toggleDisplayDiv1('1Cor',16)">1Co</td>
+                                <td value="2Co" (click)="toggleDisplayDiv1('2Cor',13)">2Co</td>
+                                <td value="Gal" (click)="toggleDisplayDiv1('Gal',6)">Gal</td>
+                                <td value="Eph" (click)="toggleDisplayDiv1('Eph',6)">Eph</td>
+                                <td value="Phl" (click)="toggleDisplayDiv1('Phlm',4)">Phl</td>
+                            </tr>
+                            <tr>
+                                <td value="Col" (click)="toggleDisplayDiv1('Col',4)">Col</td>
+                                <td value="1Th" (click)="toggleDisplayDiv1('1thess',5)">1Th</td>
+                                <td value="2Th" (click)="toggleDisplayDiv1('2thess',3)">2Th</td>
+                                <td value="1Ti" (click)="toggleDisplayDiv1('1tim',6)">1Ti</td>
+                                <td value="2Ti" (click)="toggleDisplayDiv1('2tim',4)">2Ti</td>
+                                <td value="Tit" (click)="toggleDisplayDiv1('titus',3)">Tit</td>
+                                <td value="Phm" (click)="toggleDisplayDiv1('Phm',1)">Phm</td>
+                                <td value="Heb" (click)="toggleDisplayDiv1('Heb',13)">Heb</td>
+                                <td value="Jas" (click)="toggleDisplayDiv1('Jas',5)">Jas</td>
+                                <td value="1Pe" (click)="toggleDisplayDiv1('1pet',5)">1Pe</td>
+                            </tr>
+                            <tr>
+                                <td value="2Pe" (click)="toggleDisplayDiv1('2pet',3)">2Pe</td>
+                                <td value="1Jo" (click)="toggleDisplayDiv1('1john',5)">1Jo</td>
+                                <td value="2Jo" (click)="toggleDisplayDiv1('2john',1)">2Jo</td>
+                                <td value="3Jo" (click)="toggleDisplayDiv1('3john',1)">3Jo</td>
+                                <td value="Jde" (click)="toggleDisplayDiv1('Jde',1)">Jde</td>
+                                <td value="Rev" (click)="toggleDisplayDiv1('Rev',21)">Rev</td>
+                            </tr>
+                        </table>
+    
+                    </div>
+                </div> -->
+              
+                <div class="row biblechapterTable" (click)="toogelheader()" *ngIf="chapterList">
+                
+                    <div class="col-1 borderdisplay" *ngFor="let item of chapterListData">
+                        <span (click)="getPdf(item)" >{{item}}</span>
+                        
+                    </div>
+    
+                </div>
+
+
+                <!-- <div class="chapter gridster-item-content"  (click)="toogelheader()" *ngIf="chapterList">
+                    <h5> {{bookFullName}}</h5>
+                    <div class="row noMargin">
+                        <i *ngIf="PrevButton" class="fa fa-angle-double-left double1 col-1" aria-hidden="true" (click)="prevChapters()"></i>
+                        
+                            <div class="col-1 chapterListStyle" *ngFor="let cl of chapterListData" (click)="getPdf(cl)">{{cl}}</div>
+                          
+                    
+                        
+                        <i *ngIf="nextButton" class="fa fa-angle-double-right double1 col-1" aria-hidden="true " (click)="nextChapters()"></i>
+                    </div>
+                </div> -->
+                <div class="bible-searchbar-wrapper gridster-item-content">
+                    <div class="bible-searchbar">
+                        <input width="100%" type="text"
+                         placeholder=" Search... ">
+                        <i  class="fa fa-search "></i>
+                    </div>
+                    <div class="select-wrapper">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="custom-select-div ">
+                                    <label>
+                                        <select [(ngModel)]="version">
+                                            <option value="NASB" selected>NASB</option>
+                                            <option value="ESV">ESV</option>
+                                            <option value="NIV">NIV</option>
+                                            <!-- <option value="KJV">KJV</option> -->
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- <div class="col-6">
+                                <div class="custom-select-div ">
+                                    <label>Records count</label>
+                                    <label style="margin-left: 2px;">
+                                        <select [(ngModel)]="pageCountSchema" [value]="pageCountSchema" (change)="changedPageLOadSchema('pagecount')">
+                                            <option value=10>10</option>
+                                            <option value=20>20</option>
+                                            <option value=50>50</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div> -->
+                        </div>
+                     
+    
+                       
+                    </div>
+                </div>
+                <div class="bible-verse ">
+                    <div class="mySlides">
+                        <div class="navigation-wrapper">
+                            <div class="navigation gridster-item-content" id="isShowDiv2">
+                                <div class="navigation-inner gridster-item-content ">
+                                    <!-- <i class="fa fa-angle-double-left double1 " aria-hidden="true "></i>
+                                    <i class="fa fa-angle-left gridster-item-content " aria-hidden="true "
+                                        (click)="pervious()"></i> -->
+                                    <h6 *ngIf="heading">{{ book }} {{ chapter }}</h6>
+                                    <!-- <h6 *ngIf="SearchHeader">{{searchQuery}} </h6> -->
+                                    <!-- <i class="fa fa-angle-right gridster-item-content rightArrow" aria-hidden="true " (click)="next()"
+                                        ></i>
+                                    <i class="fa fa-angle-double-right double1 " aria-hidden="true "></i> -->
+                                </div>
+                            </div>
+                            <a class="bible-navigation-dot-menu" href="javascript:void(0) " (click)="toggleShow()"
+                                type="checkbox"><i class="fa fa-ellipsis-v" aria-hidden="true "></i></a>
+                        </div>
+                       
+                        <div class="table-responsive ">
+                            <table>
+                                <tbody>
+
+                                    <tr *ngFor="let item of BiblePdfs, let i= index">
+                                        <td class=" CR-tableLeft" >
+                                            <!-- <h5>{{item.division}}</h5> -->
+                                            <!-- <h5>{{item.BOOK }} {{ item.CHAPTER}}</h5> -->
+                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+                                            <div class="actionDiv " *ngIf="isShown">
+                                                <span class="dropdown">
+                                                    <span style="background: #ffce79; " class="btn" type="button"
+                                                        id="dropdownMenuButton" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                        Add
+                                                    </span>
+
+                                                    <!-- BIBLE_VERSION: "NASB"
+BOOK: "GEN"
+CHAPTER: "1"
+FATHER_ID: "Admin"
+FILE_PATH: "/uploads/javascript_tutorial.pdf_1612628817549.pdf"
+IS_ACTIVE: 1
+PDF_LABEL: "gen 1.2"
+TESTAMENT: "OT"
+createdAt: "2021-02-06T16:26:57.000Z"
+id: 10
+updatedAt: "2021-02-06T16:26:57.000Z" -->
+                                                    <div style="background: #ffce79;" class="dropdown-menu "
+                                                        aria-labelledby="dropdownMenuButton">
+
+                                                        <a class="dropdown-item"
+                                                        (click)="onSubmit(item.BOOK, item.CHAPTER,item.PDF_LABEL, item.FILE_PATH)">Work Area</a>
+                
+                                                         <a class="dropdown-item"
+                                                            (click)="savejourney(item.verse,item.text)">Journey</a>
+                                                        <a class="dropdown-item"
+                                                            (click)="savePersonalfav(item.verse,item.text)">Personal
+                                                            Favs</a>
+
+                                                    </div>
+
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="CR-tableRight ">
+                                            <p>
+                                                {{item.PDF_LABEL}}
+                                                <!-- {{item.text}} -->
+                                            </p>
+                                        </td>
+
+                                    </tr>
+                                    <!-- <span *ngIf="BibleVerses?.length > 0" (click)="changedPageLOadSchema1('viewMore')">View More</span> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+    
+    
+    
+            </div>
+
+<!-- //upload section -->
+          
+        </div>
+<!-- 
+    </div>
+    <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: none;"></div>
+</div> -->

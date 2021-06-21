@@ -1,0 +1,148 @@
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+<div class="journey-wrapper" id="journey-wrapper">
+    <!-- <div class="grid-stack-item-content ui-draggable-handle"> -->
+    <div class="analytics-panel-wrapper" id="analytics-panel-wrapper">
+        <div class="analytics-panel-header">
+            <div class="analytics-panel-header-left">
+                <img src="/assets/dist/img/icons/flag.png">
+                <span>Chats and Flags</span>
+            </div>
+        </div>
+        <div class="flag-panel-body gridster-item-content" id="analytics-panel-body" [formGroup]="ChatFlagFrom"
+            (ngSubmit)="onSubmit()">
+            <div class="search-area">
+                <div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <select formControlName="country" (change)="seletCounty(country)" name="country">
+                            <option value="" disabled>Country..</option>
+                            <option *ngFor="let country of countryList" value="{{country.id}}">
+                                {{country.country_name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <select formControlName="state" (change)="seletedState(state)" id="state">
+                            <option value="" disabled>State..</option>
+                            <option *ngFor="let state of stateList" value="{{state.id}}">
+                                {{state.state_name}} </option>
+                        </select>
+                    </div>   
+                    <div class="form-group">
+                        <label>Volunteer</label>
+                        <select formControlName="username" name="username">
+                            <option value="">Name..</option>
+                            <option *ngFor="let user of userlist" value="{{user.username}}">
+                                {{user.username}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select formControlName="status">
+                            <option value="" disabled>Flag..</option>
+                            <option value="1">Active</option>
+                            <option value="2">Resolve</option>
+                        </select>
+                    </div>
+
+                    
+                </div>
+                <div>
+
+                    <div class="form-group">
+                        <label>Month</label>
+                        <span>
+                            <input type="date" formControlName="startMonth">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>To Month</label>
+                        <span>
+                            <input type="date" formControlName="endMonth" value="">
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- <div class="form-group">
+                            <label>Time: From</label>
+                            <span>
+                                <input formControlName="fromTime" type="time">
+                            </span>
+                            
+
+                        </div>
+                        <div class="form-group">
+                            <label>To Time:</label>
+                            <span>
+                                <input formControlName="toTime" type="time">
+                            </span>
+
+
+                        </div> -->
+                    <button type="submit" class="btn btn-primary" (click)="onSubmit()"> Search</button>
+                    <button type="submit" class="btn btn-primary" (click)="reset()"> Reset</button>
+                </div>
+            </div>
+            <div class="result">
+                <div class="key-terms">
+                    <h6>Key Terms and Times:</h6><span class="time">00:05:47</span>
+                    <div class="bible-searchbar-wrapper">
+                        <div class="bible-searchbar">
+                            <input width="100%" type="text" placeholder="Search...">
+                            <i href="#" class="fa fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 200px ; overflow-y: scroll;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Admin ID</th>
+                                <th>Duration</th>
+                                <th>Started At:</th>
+                                <th>Last Message At:</th>
+                                <th>Status</th>
+                                <th>Time Zone</th>
+                            </tr>
+                            <tr *ngFor="let room of allChatRooms; let i = index" (click)="getchat(room)">
+                                <td *ngIf="room.IS_FLAG == 1" class="light"><img
+                                        src="/assets/dist/img/icons/flagged-color.png">{{room.USER_NAME}}</td>
+                                <td *ngIf="room.IS_FLAG == 0" class="light">{{room.USER_NAME}}</td>
+
+                                <td>{{room.PASTOR_ID}}</td>
+                               
+                                <td class="dark">  {{room.FIRST_CHAT_TIME | timecalculate : room.LAST_MESSAGE_TIME}}</td>
+                                <td class="dark">{{room.createdAt | date}}</td>
+                                <td class="dark">{{room.updatedAt | date}}</td>
+                                <td *ngIf="room.CHAT_STATUS == 0" class="light">In Queue</td>
+                                <td *ngIf="room.CHAT_STATUS == 1" class="light">Live</td>
+                                <td *ngIf="room.CHAT_STATUS == 2" class="light">Closed</td>
+
+                                <td class="light">CST</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- </div> -->
+</div>
+<!-- </div>
+
+    </div> -->
+<!-- </div> -->

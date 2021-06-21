@@ -1,0 +1,64 @@
+<!-- <div class="grid-stack-item journey-sub2-grid" id="journey-sub2-grid"> -->
+    <!-- <div class="grid-stack-item-content"> -->
+
+        <!-- Journey Master Div -->
+        <div class="journey-sub2-wrapper" id="journey-sub2-wrapper" *ngIf="isDisplay">
+            <!-- Journey Header-->
+            <div class="journey-sub2-header" ondblclick="expandCollapse('journey-sub2');">
+                <div class="journey-sub-header-left">
+                    <img src="/assets/dist/img/icons/journey-head-icon.png">
+                    <span style="padding-right: 5px">Pdf’s, MP3’s, etc.</span>
+                </div>
+                <div class="journey-sub-header-right gridster-item-content">
+                    <a class="journey-sub-dot-menu" (click)="toggleDelete()"><i class="fa fa-ellipsis-v"
+                            aria-hidden="true"></i></a>
+                            <a id="journey-sub2-close-btn" (click)="toggleclosebtn()">
+                                <i  style="padding-left: 5px; border-left:1px solid #78500c" class="fa fa-close gridster-item-content"></i></a>
+                        </div>
+                    
+            </div>
+            <!-- Journey Body-->
+            <div class="journey-sub2-body" id="journey-sub2-body">
+
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+
+                            <!-- content 01 -->
+                            <tr *ngFor="let item of JourneyMp3Pdf">
+                                <td class="CR-tableLeft">
+                                        <i *ngIf="showDelete" class="fa fa-trash-o" (click)="deleteJourneyItem(item)"></i>
+                                   
+                                    <i *ngIf="item.CONTENT_TYPE == 'pdf'" class="fa fa-file-pdf-o"></i>
+                                    <i *ngIf="item.CONTENT_TYPE == 'mp3'" class="fa fa-volume-up" ></i>
+                                </td>
+                                <td class="CR-tableRight">
+                                    {{item.meaning}}
+                                </td>
+                            </tr>
+
+                            <!-- content 02 -->
+                            <!-- <tr>
+                                <td class="CR-tableLeft">
+                                    <button type="submit">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+                                </td>
+                                <td class="CR-tableRight">
+                                    <p>
+                                        For the one who sows to his own flesh will from the flesh reap corruption, but the one who sows to the Spirit will from the Spirit reap eternal life.
+                                    </p>
+                                </td>
+                            </tr> -->
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    <!-- </div> -->
+<!-- </div> -->

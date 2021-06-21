@@ -1,0 +1,92 @@
+<!-- <div class="col">
+    <div style="width: 150px; height: 100px;" class="grid-stack-item flag-chat-history-panel-grid ui-draggable ui-resizable ui-resizable-autohide" id="flag-chat-history-panel-grid" >
+        <div class="grid-stack-item-content ui-draggable-handle"> -->
+            <div id="flag-chat-history-panel-wrapper" class="flag-chat-history-panel-wrapper" data-id="chat-history-panel-wrapper" style="height: 100%; min-height: 100%;">
+                <div class="flag-chat-history-panel-header" ondblclick="$('#flag-chat-history-panel').toggle()">
+                    <div class="flag-chat-history-panel-header-left">
+                        <img src="/assets/dist/img/icons/live-chat-icon.png">
+                        <span *ngIf="flagchatInput != undefined ">{{flagchatInput.USER_NAME}}</span>
+                        <!-- <img src="dist/img/icons/user.png">
+                                <span>Brent2117</span> -->
+                    </div>
+                    <div class="flag-chat-history-panel-header-right">
+                        <!-- <a href="javascript:void(0)"><img src="/assets/dist/img/icons/block.png"></a>
+                        <a href="javascript:void(0)"><img src="/assets/dist/img/icons/setting.png"></a> -->
+                        <a href="javascript:void(0)" (click)="closebtn()" id="chat-history-panel-close-btn"><i class="fa fa-close"></i></a>
+                    </div>
+                </div>
+                <div class="flag-chat-history-panel-body" id="flag-chat-history-panel" style="display: block;">
+                    <div class="result">
+                        <h6 *ngIf="flagchatInput != undefined"><span>{{flagchatInput.TOPIC}}</span></h6>
+                        <!-- <div class="icon">
+                            <i class="fa fa-angle-left"></i><i class="fa fa-angle-right"></i>
+                        </div> -->
+                    </div>
+                    <div class="notes">
+
+                        <div class="chat-panel-messages-body" *ngFor="let chat of chatmessages">
+                            <!-- Text Left Message -->
+                            <div *ngIf="flagchatInput.USER_ID == chat.sender_id" class="chat-panel-messages-left">
+                                <div class="chat-panel-header-left-body">
+                                   
+                                    <p>{{chat.message}}
+                                    </p>
+                                </div>
+                                <span> {{chat.updatedAt | date :'mm ss'}} </span>
+                            </div>
+
+                            <!-- Text Right Message -->
+                            <div *ngIf="flagchatInput.PASTOR_ID == chat.sender_id"  class="chat-panel-messages-right">
+                                <h6 style="font-family: 'Montserrat Bold'">{{flagchatInput.PASTOR_ID}} </h6>
+                                    <P>{{chat.message}}</P>
+                                <span> {{chat.updatedAt | date :'mm ss'}} </span>
+                            </div>
+
+
+                            <!-- Text Left Message -->
+                            <!-- <div class="chat-panel-messages-left">
+                                <div class="chat-panel-header-left-body">
+                                    <h6> Brent2117: </h6>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna lust. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus
+                                        vel facilisis.
+                                    </p>
+                                </div>
+                                <span> 10:56am </span>
+                            </div> -->
+
+                            <!-- Text Right Message -->
+                            <!-- <div class="chat-panel-messages-right">
+                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab. </p>
+                                <span> 10:57am </span>
+                            </div> -->
+
+
+                            <!-- Text Left Message -->
+                            <!-- <div class="chat-panel-messages-left">
+                                <div class="chat-panel-header-left-body">
+                                    <h6> Brent2117: </h6>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna lust. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus
+                                        vel facilisis.
+                                    </p>
+                                </div>
+                                <span> 10:56am </span>
+                            </div> -->
+
+                            <!-- Text Right Message -->
+                            <!-- <div class="chat-panel-messages-right">
+                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab. </p>
+                                <span> 10:57am </span>
+                            </div> -->
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+        <!-- <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: none;"></div></div> -->
+        <!-- </div> -->
+
+    <!-- </div>
+</div> -->

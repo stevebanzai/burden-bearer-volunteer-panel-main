@@ -1,0 +1,119 @@
+<div class="d-flex" style="overflow-x: hidden;">
+    <div [ngClass]="iscollapsed?'w50 ':'w190'" style="position: relative;">
+        <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
+
+        <!-- <div class="col-2"> -->
+        <div id="sidebar-container" [ngClass]="iscollapsed?'sidebar-collapsed':'sidebar-expanded'"
+            class="d-none d-md-block bg-light">
+            <a (click)="toggleSidebar()" class=" text-dark sidenav-collapse">
+                <div class="nav-expand-close">
+                    <span id="collapse-icon" class="fa fa-angle-double-left icon-size"></span>
+                </div>
+            </a>
+            <div class="leftmenu-scroll">
+                <ul class="list-group">
+                   
+                    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false"
+                        class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"
+                       >
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Dashboard</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false" 
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Journey</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Chat</span>
+                        </div>
+                    </a>
+                    <a (click)="navigate('reports')" data-toggle="collapse" aria-expanded="false"
+                        class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Reports and
+                                Metrics</span>
+
+                        </div>
+                    </a>
+                    <!-- <a data-toggle="collapse" aria-expanded="false" (click)="toggelemp3pdfect()" class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span class="menu-collapsed"> toggelelustde</span>
+             
+                        </div>
+                    </a> -->
+
+                    <a (click)="navigate('flags')" data-toggle="collapse" aria-expanded="false"
+                        class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Flags</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false"style="background-color: skyblue;"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer
+                                Registration</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('uploads')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/uploads.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Uploads</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('userList')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img src="./assets/dist/img/icons/user-group.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer List</span>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        </div>
+   <div  [ngClass]="iscollapsed?'col-11':'col-10'" class="pr-0">
+       <!-- <app-playarea></app-playarea> -->
+       <gridster [options]="options " *ngIf="loaded " style="background: #fff;">
+
+        
+
+           <gridster-item  [item]="{cols: 9, rows: 7, y: 0, x: 0} " class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsevolunteer ? 'chatcomponentclosed':'chatcomponentexpanded'">
+               <ndc-dynamic  [ndcDynamicComponent]="component17"></ndc-dynamic>
+           </gridster-item>
+
+        
+         
+      
+       </gridster>
+   </div>
+<!-- </div> -->
+
+

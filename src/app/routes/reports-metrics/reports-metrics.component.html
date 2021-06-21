@@ -1,0 +1,267 @@
+<div class="d-flex" style="overflow-x: hidden;">
+    <div [ngClass]="iscollapsed?'w50 ':'w190'" style="position: relative;">
+        <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
+
+        <!-- <div class="col-2"> -->
+        <div id="sidebar-container" [ngClass]="iscollapsed?'sidebar-collapsed':'sidebar-expanded'"
+            class="d-none d-md-block bg-light">
+            <a (click)="toggleSidebar()" class=" text-dark sidenav-collapse">
+                <div class="nav-expand-close">
+                    <span id="collapse-icon" class="fa fa-angle-double-left icon-size"></span>
+                </div>
+            </a>
+            <div class="leftmenu-scroll">
+                <ul class="list-group">
+                   
+                    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false"
+                        class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"
+                       >
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Dashboard</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false" 
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Journey</span>
+
+                        </div>
+                    </a>
+
+                    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Chat</span>
+                        </div>
+                    </a>
+                    <a (click)="navigate('reports')" data-toggle="collapse" aria-expanded="false"style="background-color: skyblue;"
+                        class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Reports and
+                                Metrics</span>
+
+                        </div>
+                    </a>
+                    <!-- <a data-toggle="collapse" aria-expanded="false" (click)="toggelemp3pdfect()" class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+                            <span class="menu-collapsed"> toggelelustde</span>
+             
+                        </div>
+                    </a> -->
+
+                    <a (click)="navigate('flags')" data-toggle="collapse" aria-expanded="false"
+                        class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Flags</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer
+                                Registration</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('uploads')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img
+                                    src="/assets/dist/img/icons/sidebar-icons/uploads.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Uploads</span>
+
+                        </div>
+                    </a>
+                    <a (click)="navigate('userList')" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-icon-left"><img src="./assets/dist/img/icons/user-group.png"></span>
+                            <span [ngClass]="iscollapsed?'d-none':'d-flex'" class="menu-collapsed">Volunteer List</span>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+
+
+<!-- </div> -->
+
+   </div>
+   <div class="col-10 pr-0">
+       <!-- <app-playarea></app-playarea> -->
+       <gridster [options]="options " *ngIf="loaded " style="background: #fff; padding: 0 15px;">
+
+  
+<!-- CHAT DISPOSITION -->
+           <gridster-item  [item]="{cols: 3, rows: 4, y: 0, x: 0}" class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsereportmatric ? 'chatcomponentclosed':'chatcomponentexpanded'">
+            <div class="analytics-panel-wrapper" id="analytics-panel-wrapper">                <!-- PDF Header-->
+                <div class="analytics-panel-header" ondblclick="expandCollapse('analytics-panel')">
+                    <div class="analytics-panel-header-left">
+                        <img src="/assets/dist/img/icons/chart.png">
+                        <span>Chat Dispositions</span>
+                      
+                    </div>
+            
+                
+                  
+                </div>        
+                
+            
+                <!-- PDF panel Body-->
+                <div class="analytics-panel-body" id="analytics-panel-body">
+                    <highcharts-chart *ngIf="dataLoaded"
+                    [Highcharts] = "highcharts" 
+                    [options] = "defaultOptions" 
+                    style = "width: 100%; height: 400px; display: block;">
+                 </highcharts-chart>
+<!-- 
+                 <div #charts></div> -->
+                 <!-- <div #myname id="myname"></div> -->
+                </div>
+            
+            </div>
+           </gridster-item>
+           <!-- CHAT DISPOSITION ENDS -->
+
+           <!-- BURDEN BEARER -->
+
+           <gridster-item  [item]="{cols: 3, rows: 4, y: 0, x: 3}" class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsereportmatric ? 'chatcomponentclosed':'chatcomponentexpanded'">
+            <div class="analytics-panel-wrapper" id="analytics-panel-wrapper">
+
+
+                <!-- PDF Header-->
+                <div class="analytics-panel-header" ondblclick="expandCollapse('analytics-panel')">
+                    <div class="analytics-panel-header-left">
+                        <img src="/assets/dist/img/icons/chart.png">
+                        <span>BURDEN BEARER</span>
+                    </div>
+            
+                    <div class="analytics-panel-header-right">
+                        <a href="javascript:void(0)" onclick="$('#analytics-panel-body').toggle()"
+                            id="analytics-panel-collapse-btn"><i class="fa fa-angle-down"></i></a>
+                        <a href="javascript:void(0)"  id="analytics-panel-close-btn"><i
+                                class="fa fa-close"></i></a>
+                    </div>
+            
+                </div>
+            
+            
+                <!-- PDF panel Body-->
+                <div class="analytics-panel-body gridster-item-content" id="analytics-panel-body">
+                    <div class="bearer-panel-body gridster-item-content" id="analytics-panel-body">
+                        <!-- <div class="tab-main gridster-item-content">
+                            <h6  class="active" (click)="toggleBBStatsTabs(1)"><span>Today</span></h6>
+                            <h6   (click)="toggleBBStatsTabs(7)"><span>Week</span></h6>
+                            <h6   (click)="toggleBBStatsTabs(30)"><span>Month</span></h6>
+                        </div> -->
+                        
+                        <div class="tab-main gridster-item-content">
+                            <h6  [ngClass]="(BBStatToday)?'active':''" (click)="getTodaysChat()"><span>Today</span></h6>
+                            <h6  [ngClass]="(BBStatweek)?'active':''" (click)="getWeeklyChatRecords()"><span>Week</span></h6>
+                            <h6  [ngClass]="(BBStatMonth)?'active':''" (click)="getMonthlyChatRecords()"><span>Month</span></h6>
+                        </div>
+                        <div class="tab-body gridster-item-content">
+                        
+                            <div   >
+                                <div class="top">
+                                    <select [(ngModel)]="selectedVolunteer" (change)="getTodaysChat()" *ngIf="BBStatToday">
+                                        <option disabled selected>Select One </option>
+                                        <option *ngFor="let vol of allVolunteers;"  value="{{vol.username}}" >{{vol.username}}</option>
+                                    </select>
+    
+                                    <select [(ngModel)]="selectedVolunteer" (change)="getWeeklyChatRecords()" *ngIf="BBStatweek">
+                                        <option disabled selected>Select One </option>
+                                        <option *ngFor="let volunteer of allVolunteers; "value="{{volunteer.username}}" >{{volunteer.username}}</option>
+                                    </select>
+                                    <select [(ngModel)]="selectedVolunteer" (change)="getMonthlyChatRecords()" *ngIf="BBStatMonth">
+                                        <option disabled selected>Select One </option>
+                                        <option *ngFor="let volunteer of allVolunteers; "value="{{volunteer.username}}" >{{volunteer.username}}</option>
+                                    </select>
+                                    <div class="right">
+                                        <h6>Total of BBers:</h6>
+                                        <input type="text" value={{allVolunteers?.length}} disabled>
+                                    </div>
+                                </div>
+                                <div class="second">
+                                    <table>
+                                        <tbody><tr>
+                                            <th>Total Chat 
+                                            </th>
+                                            <!-- <th>First Chat<span class="number-sign">#</span><span class="percent-sign">%</span></th> -->
+                                            <th>Avg Time/Chat</th>
+                                            <!-- <th>Restored<span class="number-sign">#</span><span class="percent-sign">%</span></th> -->
+                                            <!-- <th>Chats in Country</th> -->
+                                        </tr>
+                                        <tr *ngFor="let data of CurrentDayChatRecords; let i =index">
+                                            <td>{{i+1}}</td>
+                                            
+                                         
+                                            <td>{{averageChatTime | number : '1.2-2'}} mins</td>
+                                            <!-- <td>{{data.count}}</td> -->
+                                            <!-- <td>5</td> -->
+                                        </tr>
+                                        <!-- <td>   {{averageChatTime}}</td> -->
+                                    </tbody></table>
+                                </div>
+                            </div>
+
+                         
+                        </div>
+                    </div>
+               
+                </div>
+            
+            </div>
+           </gridster-item>
+
+        
+<!-- FLAGS -->
+           <gridster-item  [item]="{cols: 4, rows: 4, y: 0, x: 6}" class="gridster-item-content " style="padding: 1px; margin-left: 10px; margin-right: 10px; padding-top: 5px;" [ngClass]="collapsereportmatric?'chatcomponentclosed':'chatcomponentexpanded'">
+            <div class="analytics-panel-wrapper" id="analytics-panel-wrapper">
+                <div class="analytics-panel-header" ondblclick="expandCollapse('analytics-panel')">
+                    <div class="analytics-panel-header-left">
+                        <img src="./assets/dist/img/icons/flag.png">
+                        <span>Flagged Chats</span>
+                    </div>
+                </div>
+                <div class="chat-flagged-panel-body" id="analytics-panel-body">
+                    <div class="tab-main">
+                        <h6 panel-class="tab1" [ngClass]="(dailyFlagtab)?'active':''" (click)="GetFlaggedChats()"><span>Today</span></h6>
+                        <h6 panel-class="tab2" [ngClass]="(weeklyflagTab)?'active':''" (click)="getweeklyFlaggedChats()"><span>Week</span></h6>
+                        <h6 panel-class="tab3" [ngClass]="(monthlyflagtab)?'active':''" (click)="getMonthlylyFlaggedChats()" ><span>Month</span></h6>
+                    </div>
+                    <div class="tab-body">
+                        <div>
+                            <h4 class="flag-text"><span>{{flaggedChats?.length}}</span>Flags</h4>
+                            <img src="./assets/dist/img/icons/flagged-color.png">
+                        </div>
+                     
+                    </div>
+                </div>
+
+            </div>
+           </gridster-item>
+
+       
+       </gridster>
+   </div>
+</div>
+
+

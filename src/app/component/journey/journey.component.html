@@ -1,0 +1,116 @@
+<!-- <div class="grid-stack-item journey-grid" id="journey-grid">
+    <div class="grid-stack-item-content"> -->
+
+        <!-- Journey Master Div -->
+        <div class="journey-wrapper" id="journey-wrapper">
+
+
+            <!-- Journey Header-->
+            <div class="journey-header" ondblclick="expandCollapse('journey');">
+                <div class="journey-header-left">
+                    <img src="/assets/dist/img/icons/journey-head-icon.png">
+                    <span style="padding-right: 5px">Journey</span>
+                    <!-- <span id="journey-head-user">Brent 2117</span> -->
+                </div>
+
+                <div class="journey-header-right" *ngIf="false">
+                    <a href="javascript:void(0)" id="journey-close-btn">
+                        <i (click)="toggleclosebtn()" style="padding-left: 5px; border-left:1px solid #78500c" class="fa fa-close"></i></a>
+                </div>
+
+            </div>
+
+            <!-- Journey Body-->
+            <div class="journey-body" id="journey-body">
+
+                <div class="jb-header">
+
+                    <div class="jb-header-headingText">
+                        <span id="jb-header-text">{{SelectedJourneyName}}</span>
+                        <span>
+                            <img id="jb-header-trash" 
+                            href="javascript:void(0)" (click)="deleteJourney()" src="/assets/dist/img/icons/trash-icon.png">
+                        </span>
+                    </div>
+
+                    <div class="hidden" id="jb-header-text-edit">
+                        <input type="text" value="Lust, Deceit, Cover-up">
+                        <span><img href="javascript:void(0)" src="/assets/dist/img/icons/trash-icon.png"></span>
+                    </div>
+                </div>
+
+                <div class="jb-action">
+                    <span id="jb-rename" (click)="ToggleRenamDuplicateWA('rename')">Rename</span>
+                    <span id="jb-duplicate" (click)="ToggleRenamDuplicateWA('dup')">Duplicate</span>
+                    <span id="jb-wa" (click)="dublicateJourney(NewJourneyName, 'wa')">WA</span>
+                </div>
+                <div class="gridster-item-content" *ngIf="IsRename">
+                    <a>
+                        <label>Rename journey as :</label>
+                        <input type="text" [(ngModel)]="NewJourneyName">
+                        <a  (click)="renamejourney(NewJourneyName)"><i class="fa fa-check" aria-hidden="true" style="color: green;"></i></a>
+                        <a><i class="fa fa-times" aria-hidden="true" style="color: red;" (click)="closeRenameDup()"></i> </a> 
+                    </a>
+                </div>
+
+                <div class="gridster-item-content" *ngIf="IsDublicate">
+                    <a>
+                        <label>duplicate journey as :</label>
+                        <input type="text" [(ngModel)]="NewJourneyName">
+                        <a  (click)="dublicateJourney(NewJourneyName, 'dub')"><i class="fa fa-check" aria-hidden="true" style="color: green;"></i></a>
+                        <a><i class="fa fa-times" aria-hidden="true" style="color: red;" (click)="closeRenameDup()"></i> </a> 
+                    </a>
+                </div>
+
+                <div class="jb-table gridster-item-content">
+                    <table id="jb-table" (click)="toggleDisplayDiv()">
+                        <thead>
+                            <tr>
+                                <th style="padding: 0 10px; height: 33px ">Title</th>
+                                <th class="tb-center">Verses</th>
+                                <th class="tb-center">Mp3s</th>
+                                <th class="tb-center">Pdfs</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody *ngIf="jList">
+
+                            <!-- row 1 -->
+                            <tr *ngFor="let journey of savedJourneysList; let i = index" (click)="getJourneyname(journey)">
+                                <td id="jb-td-1" style="text-align: left; height: 30px; padding-left: 10px; font: 500 12px 'Montserrat Regular'" >
+                                    {{journey.JOUNEY_NAME}}</td>
+                                    <td>{{AllJournetDataArray[i]?.scriptures}}</td>
+                                    <td>{{AllJournetDataArray[i]?.mp3}}</td>
+                                    <td>{{AllJournetDataArray[i]?.pdf}}</td>
+                            </tr>
+
+                            <!-- row 2 -->
+                            <!-- <tr onclick="JbTrSelected('jb-td-2');showjourneySub()">
+                                <td id="jb-td-2" style="text-align: left; height: 30px; padding-left: 10px; font: 500 12px 'Montserrat Regular'">
+                                    Lust, Deceit, Cover-up 2nd Row</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr> -->
+
+                            <!-- row 3 -->
+                            <!-- <tr onclick="JbTrSelected('jb-td-3');showjourneySub()">
+                                <td id="jb-td-3" style="text-align: left; height: 30px; padding-left: 10px; font: 500 12px 'Montserrat Regular'">
+                                    Lust, Deceit, Row3</td>
+                                <td>9</td>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr> -->
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    <!-- </div>
+</div> -->

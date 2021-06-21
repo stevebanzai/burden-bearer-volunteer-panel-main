@@ -1,0 +1,146 @@
+
+    <div class="journey-sub2-wrapper" id="journey-sub2-wrapper">
+
+            <div class="mp3-header" ondblclick="expandCollapse('mp3')">
+                <div class="mp3-header-left">
+                    <img src="./assets/dist/img/icons/workarea-sound-icon.png">
+                    <span>MP3's</span>
+                </div>
+            <div class="mp3-header-right">
+                <a class="mp3-dot-menu" href="javascript:void(0)" onclick="toggleAction('mp3-body')"><i
+                        class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                <a (click)="toggleclose()" class="gridster-item-content"><i class="fa fa-close"></i></a>
+            </div>
+        </div>
+        <div class="bible-body" id="bible-body">
+            <div class="buttons">
+                {{msg}}
+                <button class="ot" name="ot" (click)="toggleTestament(1)">OT</button>
+                <button class="nt" (click)="toggleTestament(2)">NT</button>
+            </div>
+            <div class="testament gridster-item-content" *ngIf="oldTestament">
+                <h5 *ngIf="this.SelectedTestament == 'OT'">Old Testament</h5>
+                <h5 *ngIf="this.SelectedTestament == 'NT'">New Testament</h5>
+                <div>
+                    <div class="row biblechapterTable" *ngIf="oldTestament">
+                        <div class="col-1 borderdisplay" *ngFor="let item of allbibleChapters">
+                            <span (click)="bookChapters(item.BOOK_ABBR)">{{item.BOOK_ABBR}}</span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row biblechapterTable" (click)="toogelheader()" *ngIf="chapterList">
+
+                <div class="col-1 borderdisplay" *ngFor="let item of chapterListData">
+                    <span (click)="getMp3(item)">{{item}}</span>
+
+                </div>
+
+            </div>
+
+            <div class="bible-searchbar-wrapper gridster-item-content">
+                <div class="bible-searchbar">
+                    <input width="100%" type="text" placeholder=" Search... ">
+                    <i class="fa fa-search "></i>
+                </div>
+                <div class="select-wrapper">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="custom-select-div ">
+                                <label>
+                                    <select [(ngModel)]="version">
+                                        <option value="NASB" selected>NASB</option>
+                                        <option value="ESV">ESV</option>
+                                        <option value="NIV">NIV</option>
+                                   
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                   
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="bible-verse ">
+                <div class="mySlides">
+                    <div class="navigation-wrapper">
+                        <div class="navigation gridster-item-content" id="isShowDiv2">
+                            <div class="navigation-inner gridster-item-content ">
+                            
+                                <h6 *ngIf="heading">{{ book }} {{ chapter }}</h6>
+                              
+                            </div>
+                        </div>
+                        <a class="bible-navigation-dot-menu" href="javascript:void(0) " (click)="toggleShow()"
+                            type="checkbox"><i class="fa fa-ellipsis-v" aria-hidden="true "></i></a>
+                    </div>
+
+                    <div class="table-responsive ">
+                        <table>
+                            <tbody>
+
+                                <tr *ngFor="let item of BiblePdfs, let i= index">
+                                    <td class=" CR-tableLeft">
+                                     
+                                        <i class="fa fa-volume-up" aria-hidden="true"></i>
+
+                                        <div class="actionDiv " *ngIf="isShown">
+                                            <span class="dropdown">
+                                                <span style="background: #ffce79; " class="btn" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    Add
+                                                </span>
+
+                                      
+                                                <div style="background: #ffce79;" class="dropdown-menu "
+                                                    aria-labelledby="dropdownMenuButton">
+
+                                                    <a class="dropdown-item"
+                                                        (click)="onSubmit(item.BOOK, item.CHAPTER,item.MP3_LABEL, item.FILE_PATH)">Work
+                                                        Area</a>
+
+                                                   
+
+                                                </div>
+
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="CR-tableRight ">
+                                        <p>
+                                            {{item.MP3_LABEL}}
+                                          
+                                        </p>
+                                    </td>
+
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+        
+
+
+        </div>
+        </div>
+
+
+    </div>
+<!-- </div>  -->
+
+
+
+    
+

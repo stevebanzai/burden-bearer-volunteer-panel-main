@@ -1,0 +1,213 @@
+<div id="chat-history-panel-wrapper" class="chat-history-panel-wrapper" data-id="chat-history-panel-wrapper">
+    <div class="chat-history-panel-header" ondblclick="$('#chat-history-panel-body').toggle()">
+        <div class="chat-history-panel-header-left">
+            <img src="/assets/dist/img/icons/live-chat-icon.png">
+            <span>Chat History</span>
+
+        </div>
+        <div class="chat-history-panel-header-right">
+            <a href="javascript:expandCollapse('chat-history-pane l');"
+                onclick="$( '#chat-history-panel-body').toggle() " id="chat-history-panel-collapse-btn"><i
+                    class="fa fa-angle-right"></i></a>
+            <a href="javascript:void(0)" (click)="toggleclosebtn()" onclick="togglePanel('chat-history-panel-grid')"
+                id="chat-history-panel-close-btn"><i class="fa fa-close"></i></a>
+        </div>
+    </div>
+    <div class="chat-history-panel-body" id="chat-history-panel-body">
+        <div class="row m-0">
+     <div class="col-6 p-0">
+        <div class="conversion" style="display: block; width: 100%;">
+            <h6>Conversation History List: <br><span class="total">(total to date) - </span><span class="date"
+                    style="color: black;">{{userList?.length}}</span>
+            </h6>
+            <table *ngFor="let data of userList">
+                <tbody>
+                    <tr>
+                        <td  (click)="getSelectDateByRecord(data.ROOM_ID,data.createdAt)"><span>{{data.createdAt | date:'MMMM dd'}}</span></td>
+                        <!-- <td><span>June 29</span>57 minutes</td> -->
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <table>
+                <tbody>
+                    <tr>
+                        <td><span>June 22</span>48 minutes</td>
+                        <td><span>July 2</span>52 minutes</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+        </div>
+        <div class="col-6 p-0">
+        <div class="search" style="display: block; width: 100%;">
+            <div class="chat-history-searchbar gridster-item-content">
+                <input width="100%" name="sender_id" [(ngModel)]="form.sender_id" (keyup.enter)="searchbysender()"
+                    type="text" placeholder="Search...">
+                <i href="#" (click)="searchbysender()" class="fa fa-search"></i>
+            </div>
+           
+            <div *ngFor="let list of searchlist">
+                {{list.message}}
+            </div>
+        </div>
+    </div>
+    </div>
+
+        <div class="notes" style="display: block; width: 100%;">
+            <div class="title">
+                <h5>
+                    <img src="/assets/dist/img/icons/user.png">
+                    <span>{{sender_name}}
+                    </span>
+                    <img class="live-chat" (click)="getLiveChatByFatherId()"
+                        src="/assets/dist/img/icons/live-chat-icon.png">
+                </h5>
+            </div>
+            <h6>Notes:</h6>
+
+            <span class="date">
+            </span>
+            <div>
+                <div *ngFor="let work of worklist" style="font-weight: 400; font-size: small; color: black; ">
+                    {{work.Date_Time}}
+                    {{work.sender_id}}
+                    <div [innerHTML]="work.Notes">
+                    </div>
+                    <hr>
+                </div>
+                <div>
+                    <h5 style="font-weight: 400; font-size: small; color: black; font: bold; ">Chat Session:</h5>
+
+
+
+                    <!-- <div class="chat-panel-messages-body"> -->
+                        <div [hidden]="!HiddenChat" *ngFor="let message of userMessageList">
+                            <ng-template [ngIf]="message.SENDER_TYPE==1" [ngIfElse]="to">
+                                <div class="chat-panel-messages-right">
+                                    <div class="chat-panel-header-right-body ">
+                                        <p> {{ message.message }}</p>
+                                        <span> {{message.createdAt | date:'shortTime'}} </span>
+    
+                                    </div>
+                                </div>
+                            </ng-template>
+    
+                            <ng-template #to>
+                                <div class="chat-panel-messages-left overflow-auto">
+                                    <div class="chat-panel-header-left-body ">
+                                        <h6 style="font-family: 'Montserrat Bold' "> {{message.sender_id}} </h6>
+                                        <p> {{ message.message }}</p>
+                                    </div>
+                                    <span> {{message.createdAt | date:'shortTime'}} </span>
+                                </div>
+                            </ng-template>
+                        </div>
+                        <!-- </div> -->
+    
+                        <!-- <div *ngFor="let message of userMessageList " [ngClass]="message.data.sender===name ? 'chat-panel-messages-right' : 'chat-panel-messages-left' ">
+                            <ng-template [ngIf]="message.data.sender===name " [ngIfElse]="to ">
+                                <p> {{ message.data.msg }}</p>
+                                <span> {{message.data.time | date:'shortTime'}} </span>
+                            </ng-template>
+                            <ng-template #to>
+    
+    
+                                <div class="chat-panel-messages-left ">
+                                    <div class="chat-panel-header-left-body ">
+                                        <h6 style="font-family: 'Montserrat Bold' "> {{message.data.sender}} </h6>
+                                        <p> {{ message.data.msg }}</p>
+                                    </div>
+                                    <span> {{message.data.time | date:'shortTime'}} </span>
+                                </div>
+                            </ng-template>
+                        </div> -->
+                    <!-- </div> -->
+                    <!-- <style>
+                    .div1 {
+                        overflow-y: scroll;
+                        min-height: 100px;
+                    }
+                </style> -->
+
+                    <!-- <div class="chat-panel-messages-body div1 gridster-item-content "> -->
+      
+                 <!-- <div [hidden]="!HiddenChat" *ngFor="let message of userMessageList"> 
+                         //{{singleChatData.message}} 
+                           <ng-template [ngIf]="message.SENDER_TYPE===1" [ngIfElse]="to">
+                                <div class="chat-panel-messages-right">
+                                    <div class="chat-panel-header-right-body ">
+                                        <p> {{ message.message }}</p>
+                                        <span> {{message.createdAt | date:'shortTime'}} </span>
+    
+                                    </div>
+                                </div>
+                            </ng-template>
+    
+                            <ng-template #to>
+                                <div class="chat-panel-messages-left ">
+                                    <div class="chat-panel-header-left-body ">
+                                        <h6 style="font-family: 'Montserrat Bold' "> {{message.sender_id}} </h6>
+                                        <p> {{ message.message }}</p>
+                                    </div>
+                                    <span> {{message.createdAt | date:'shortTime'}} </span>
+                                </div>
+                            </ng-template>
+                        </div> 
+                -->
+                
+                
+                
+                
+                
+                
+                        <!-- <div *ngFor="let message of userMessageList"> -->
+                       <!-- // {{singleChatData.message}} -->
+                        <!-- <ng-template [ngIf]="message.SENDER_TYPE===1" [ngIfElse]="to">
+                            <div class="chat-panel-messages-right">
+                                <div class="chat-panel-header-right-body ">
+                                    <p> {{ message.message }}</p>
+                                    <span> {{message.createdAt | date:'shortTime'}} </span>
+
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template #to>
+                            <div class="chat-panel-messages-left ">
+                                <div class="chat-panel-header-left-body ">
+                                    <h6 style="font-family: 'Montserrat Bold' "> {{message.sender_id}} </h6>
+                                    <p> {{ message.message }}</p>
+                                </div>
+                                <span> {{message.createdAt | date:'shortTime'}} </span>
+                            </div>
+                        </ng-template>
+                    </div>   -->
+                    <!-- </div>
+
+                    <div *ngFor="let message of messageList "
+                        [ngClass]="message.data.sender===name ? 'chat-panel-messages-right' : 'chat-panel-messages-left' ">
+                        <ng-template [ngIf]="message.data.sender===name " [ngIfElse]="to ">
+                            <p> {{ message.data.msg }}</p>
+                            <span> {{message.data.time | date:'shortTime'}} </span>
+                        </ng-template>
+                        <ng-template #to>
+
+
+                            <div class="chat-panel-messages-left ">
+                                <div class="chat-panel-header-left-body ">
+                                    <h6 style="font-family: 'Montserrat Bold' "> {{message.data.sender}} </h6>
+                                    <p> {{ message.data.msg }}</p>
+                                </div>
+                                <span> {{message.data.time | date:'shortTime'}} </span>
+                            </div>
+                        </ng-template>
+                    </div> -->
+                    <!-- </div> -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
